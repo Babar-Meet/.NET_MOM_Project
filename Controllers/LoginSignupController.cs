@@ -8,7 +8,11 @@ namespace MOM_Project.Controllers
         {
             return View();
         }
-        public IActionResult loginpage()
+        public IActionResult loginPage()
+        {
+            return View();
+        }
+        public IActionResult SignupPage()
         {
             return View();
         }

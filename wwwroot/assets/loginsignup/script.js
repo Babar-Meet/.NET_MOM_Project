@@ -58,12 +58,15 @@ class LoginForm1 {
         if (forgotLink) {
             forgotLink.addEventListener('click', (e) => this.handleForgotPassword(e));
         }
-        
+
+
+
         // Sign up link
-        const signupLink = document.querySelector('.signup-link a');
-        if (signupLink) {
-            signupLink.addEventListener('click', (e) => this.handleSignupLink(e));
-        }
+        //remove becosu causing the sing to login fail
+        //const signupLink = document.querySelector('.signup-link a');
+        //if (signupLink) {
+        //    signupLink.addEventListener('click', (e) => this.handleSignupLink(e));
+        //}
         
         // Keyboard shortcuts
         this.setupKeyboardShortcuts();

@@ -38,8 +38,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[B:/B-Tech/Sem_6/.net/Project_Final/.NET_MOM_Project/MOM_Project/Views/LoginSignup/loginpage.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5TaWdudXBcbG9naW5wYWdlLmNzaHRtbA==
+[B:/B-Tech/Sem_6/.net/Project_Final/.NET_MOM_Project/MOM_Project/Views/LoginSignup/loginPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5TaWdudXBcbG9naW5QYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[B:/B-Tech/Sem_6/.net/Project_Final/.NET_MOM_Project/MOM_Project/Views/LoginSignup/SignupPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5TaWdudXBcU2lnbnVwUGFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [B:/B-Tech/Sem_6/.net/Project_Final/.NET_MOM_Project/MOM_Project/Views/MeetingMember/MeetingMemberAddEdit.cshtml]
