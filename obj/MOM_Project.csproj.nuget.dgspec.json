@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "B:\\B-Tech\\Sem_6\\.net\\Project_Final\\.NET_MOM_Project\\MOM_Project\\MOM_Project.csproj": {}
+    "B:\\_Git\\DEV\\Meet86\\.NET_MOM_Project\\MOM_Project.csproj": {}
   },
   "projects": {
-    "B:\\B-Tech\\Sem_6\\.net\\Project_Final\\.NET_MOM_Project\\MOM_Project\\MOM_Project.csproj": {
+    "B:\\_Git\\DEV\\Meet86\\.NET_MOM_Project\\MOM_Project.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "B:\\B-Tech\\Sem_6\\.net\\Project_Final\\.NET_MOM_Project\\MOM_Project\\MOM_Project.csproj",
+        "projectUniqueName": "B:\\_Git\\DEV\\Meet86\\.NET_MOM_Project\\MOM_Project.csproj",
         "projectName": "MOM_Project",
-        "projectPath": "B:\\B-Tech\\Sem_6\\.net\\Project_Final\\.NET_MOM_Project\\MOM_Project\\MOM_Project.csproj",
+        "projectPath": "B:\\_Git\\DEV\\Meet86\\.NET_MOM_Project\\MOM_Project.csproj",
         "packagesPath": "C:\\Users\\babar\\.nuget\\packages\\",
-        "outputPath": "B:\\B-Tech\\Sem_6\\.net\\Project_Final\\.NET_MOM_Project\\MOM_Project\\obj\\",
+        "outputPath": "B:\\_Git\\DEV\\Meet86\\.NET_MOM_Project\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

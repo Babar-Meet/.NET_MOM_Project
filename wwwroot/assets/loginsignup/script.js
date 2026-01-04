@@ -269,6 +269,7 @@ class LoginForm1 {
     //    }, 2000);
     //}
 
+
     //new code/
     simulateRedirect() {
         window.location.href = "/Home/Dashboard";
