@@ -1,12 +1,173 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "B:\\_Git\\DEV\\Meet86\\.NET_MOM_Project\\",
-  "Documents": [],
+  "WorkspaceRootPath": "B:\\B-Tech\\Sem_6\\.net\\Project_Final\\.NET_MOM_Project\\MOM_Project\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0BD0C085-B158-68CC-9B5D-7B2793C7599F}|MOM_Project.csproj|b:\\b-tech\\sem_6\\.net\\project_final\\.net_mom_project\\mom_project\\views\\staff\\stafflist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0BD0C085-B158-68CC-9B5D-7B2793C7599F}|MOM_Project.csproj|solutionrelative:views\\staff\\stafflist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0BD0C085-B158-68CC-9B5D-7B2793C7599F}|MOM_Project.csproj|b:\\b-tech\\sem_6\\.net\\project_final\\.net_mom_project\\mom_project\\controllers\\staffcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0BD0C085-B158-68CC-9B5D-7B2793C7599F}|MOM_Project.csproj|solutionrelative:controllers\\staffcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0BD0C085-B158-68CC-9B5D-7B2793C7599F}|MOM_Project.csproj|b:\\b-tech\\sem_6\\.net\\project_final\\.net_mom_project\\mom_project\\models\\staffmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0BD0C085-B158-68CC-9B5D-7B2793C7599F}|MOM_Project.csproj|solutionrelative:models\\staffmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0BD0C085-B158-68CC-9B5D-7B2793C7599F}|MOM_Project.csproj|b:\\b-tech\\sem_6\\.net\\project_final\\.net_mom_project\\mom_project\\views\\meetingvenue\\meetingvenuelist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0BD0C085-B158-68CC-9B5D-7B2793C7599F}|MOM_Project.csproj|solutionrelative:views\\meetingvenue\\meetingvenuelist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0BD0C085-B158-68CC-9B5D-7B2793C7599F}|MOM_Project.csproj|b:\\b-tech\\sem_6\\.net\\project_final\\.net_mom_project\\mom_project\\controllers\\meetingvenuecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0BD0C085-B158-68CC-9B5D-7B2793C7599F}|MOM_Project.csproj|solutionrelative:controllers\\meetingvenuecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0BD0C085-B158-68CC-9B5D-7B2793C7599F}|MOM_Project.csproj|b:\\b-tech\\sem_6\\.net\\project_final\\.net_mom_project\\mom_project\\models\\meetingvenuemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0BD0C085-B158-68CC-9B5D-7B2793C7599F}|MOM_Project.csproj|solutionrelative:models\\meetingvenuemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0BD0C085-B158-68CC-9B5D-7B2793C7599F}|MOM_Project.csproj|b:\\b-tech\\sem_6\\.net\\project_final\\.net_mom_project\\mom_project\\views\\meetingtype\\meetingtypelist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0BD0C085-B158-68CC-9B5D-7B2793C7599F}|MOM_Project.csproj|solutionrelative:views\\meetingtype\\meetingtypelist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0BD0C085-B158-68CC-9B5D-7B2793C7599F}|MOM_Project.csproj|b:\\b-tech\\sem_6\\.net\\project_final\\.net_mom_project\\mom_project\\controllers\\meetingtypecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0BD0C085-B158-68CC-9B5D-7B2793C7599F}|MOM_Project.csproj|solutionrelative:controllers\\meetingtypecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0BD0C085-B158-68CC-9B5D-7B2793C7599F}|MOM_Project.csproj|b:\\b-tech\\sem_6\\.net\\project_final\\.net_mom_project\\mom_project\\models\\meetingtypemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0BD0C085-B158-68CC-9B5D-7B2793C7599F}|MOM_Project.csproj|solutionrelative:models\\meetingtypemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "StaffList.cshtml",
+              "DocumentMoniker": "B:\\B-Tech\\Sem_6\\.net\\Project_Final\\.NET_MOM_Project\\MOM_Project\\Views\\Staff\\StaffList.cshtml",
+              "RelativeDocumentMoniker": "Views\\Staff\\StaffList.cshtml",
+              "ToolTip": "B:\\B-Tech\\Sem_6\\.net\\Project_Final\\.NET_MOM_Project\\MOM_Project\\Views\\Staff\\StaffList.cshtml",
+              "RelativeToolTip": "Views\\Staff\\StaffList.cshtml",
+              "ViewState": "AgIAACEAAAAAAAAAAAAswEYAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-06T05:50:10.976Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "StaffController.cs",
+              "DocumentMoniker": "B:\\B-Tech\\Sem_6\\.net\\Project_Final\\.NET_MOM_Project\\MOM_Project\\Controllers\\StaffController.cs",
+              "RelativeDocumentMoniker": "Controllers\\StaffController.cs",
+              "ToolTip": "B:\\B-Tech\\Sem_6\\.net\\Project_Final\\.NET_MOM_Project\\MOM_Project\\Controllers\\StaffController.cs",
+              "RelativeToolTip": "Controllers\\StaffController.cs",
+              "ViewState": "AgIAAAUBAAAAAAAAAAAqwCoBAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-06T05:39:44.804Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "StaffModel.cs",
+              "DocumentMoniker": "B:\\B-Tech\\Sem_6\\.net\\Project_Final\\.NET_MOM_Project\\MOM_Project\\Models\\StaffModel.cs",
+              "RelativeDocumentMoniker": "Models\\StaffModel.cs",
+              "ToolTip": "B:\\B-Tech\\Sem_6\\.net\\Project_Final\\.NET_MOM_Project\\MOM_Project\\Models\\StaffModel.cs",
+              "RelativeToolTip": "Models\\StaffModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-06T05:36:35.348Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MeetingVenueList.cshtml",
+              "DocumentMoniker": "B:\\B-Tech\\Sem_6\\.net\\Project_Final\\.NET_MOM_Project\\MOM_Project\\Views\\MeetingVenue\\MeetingVenueList.cshtml",
+              "RelativeDocumentMoniker": "Views\\MeetingVenue\\MeetingVenueList.cshtml",
+              "ToolTip": "B:\\B-Tech\\Sem_6\\.net\\Project_Final\\.NET_MOM_Project\\MOM_Project\\Views\\MeetingVenue\\MeetingVenueList.cshtml",
+              "RelativeToolTip": "Views\\MeetingVenue\\MeetingVenueList.cshtml",
+              "ViewState": "AgIAABcAAAAAAAAAAAAswDwAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-06T05:36:10.478Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MeetingVenueController.cs",
+              "DocumentMoniker": "B:\\B-Tech\\Sem_6\\.net\\Project_Final\\.NET_MOM_Project\\MOM_Project\\Controllers\\MeetingVenueController.cs",
+              "RelativeDocumentMoniker": "Controllers\\MeetingVenueController.cs",
+              "ToolTip": "B:\\B-Tech\\Sem_6\\.net\\Project_Final\\.NET_MOM_Project\\MOM_Project\\Controllers\\MeetingVenueController.cs",
+              "RelativeToolTip": "Controllers\\MeetingVenueController.cs",
+              "ViewState": "AgIAAIsAAAAAAAAAAAAUwLEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-06T05:35:56.787Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MeetingVenueModel.cs",
+              "DocumentMoniker": "B:\\B-Tech\\Sem_6\\.net\\Project_Final\\.NET_MOM_Project\\MOM_Project\\Models\\MeetingVenueModel.cs",
+              "RelativeDocumentMoniker": "Models\\MeetingVenueModel.cs",
+              "ToolTip": "B:\\B-Tech\\Sem_6\\.net\\Project_Final\\.NET_MOM_Project\\MOM_Project\\Models\\MeetingVenueModel.cs",
+              "RelativeToolTip": "Models\\MeetingVenueModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-06T05:35:34.606Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MeetingTypeList.cshtml",
+              "DocumentMoniker": "B:\\B-Tech\\Sem_6\\.net\\Project_Final\\.NET_MOM_Project\\MOM_Project\\Views\\MeetingType\\MeetingTypeList.cshtml",
+              "RelativeDocumentMoniker": "Views\\MeetingType\\MeetingTypeList.cshtml",
+              "ToolTip": "B:\\B-Tech\\Sem_6\\.net\\Project_Final\\.NET_MOM_Project\\MOM_Project\\Views\\MeetingType\\MeetingTypeList.cshtml",
+              "RelativeToolTip": "Views\\MeetingType\\MeetingTypeList.cshtml",
+              "ViewState": "AgIAABsAAAAAAAAAAAAUwD4AAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-06T05:32:02.773Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MeetingTypeController.cs",
+              "DocumentMoniker": "B:\\B-Tech\\Sem_6\\.net\\Project_Final\\.NET_MOM_Project\\MOM_Project\\Controllers\\MeetingTypeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\MeetingTypeController.cs",
+              "ToolTip": "B:\\B-Tech\\Sem_6\\.net\\Project_Final\\.NET_MOM_Project\\MOM_Project\\Controllers\\MeetingTypeController.cs",
+              "RelativeToolTip": "Controllers\\MeetingTypeController.cs",
+              "ViewState": "AgIAAJAAAAAAAAAAAAAUwKMAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-06T05:30:12.493Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "MeetingTypeModel.cs",
+              "DocumentMoniker": "B:\\B-Tech\\Sem_6\\.net\\Project_Final\\.NET_MOM_Project\\MOM_Project\\Models\\MeetingTypeModel.cs",
+              "RelativeDocumentMoniker": "Models\\MeetingTypeModel.cs",
+              "ToolTip": "B:\\B-Tech\\Sem_6\\.net\\Project_Final\\.NET_MOM_Project\\MOM_Project\\Models\\MeetingTypeModel.cs",
+              "RelativeToolTip": "Models\\MeetingTypeModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-06T05:30:03.647Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

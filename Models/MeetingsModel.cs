@@ -2,31 +2,17 @@
 {
     public class MeetingsModel
     {
-        int MeetingID { get; set; }
-
-        DateTime MeetingDate { get; set; }
-
-        int MeetingVenueID { get; set; }
-
-        int MeetingTypeID { get; set; }
-
-        int DepartmentID { get; set; }
-
-        string? MeetingDescription { get; set; }
-
-        string? DocumentPath { get; set; }
-
-        DateTime Created { get; set; }
-
-
-        DateTime Modified { get; set; }
-
-        
-        bool? IsCancelled { get; set; }
-
-        DateTime CancellationDateTime { get; set;  }
-
-        string CancellationReason { get; set; }
+        public int MeetingID { get; set; }
+        public DateTime MeetingDate { get; set; }
+        public string MeetingVenue { get; set; }  
+        public string MeetingType { get; set; }   
+        public string Department { get; set; }    
+        public string? MeetingDescription { get; set; }
+        public string? DocumentPath { get; set; }
+        public DateTime Created { get; set; }
+        public DateTime Modified { get; set; }
+        public bool? IsCancelled { get; set; }
+        public DateTime? CancellationDateTime { get; set; }  
+        public string? CancellationReason { get; set; }
     }
-
 }

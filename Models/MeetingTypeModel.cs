@@ -2,15 +2,10 @@
 {
     public class MeetingTypeModel
     {
-        int MeetingTypeID { get; set; }
-        string MeetingTypeName { get; set; }
-
-        string Remarks { get; set; }
-
-        DateTime Created { get; set; }
-
-        DateTime Modified { get; set; }
-
-
+        public int MeetingTypeID { get; set; }
+        public string MeetingTypeName { get; set; }
+        public string Remarks { get; set; }
+        public DateTime Created { get; set; }
+        public DateTime Modified { get; set; }
     }
 }

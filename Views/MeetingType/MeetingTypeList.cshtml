@@ -1,5 +1,9 @@
-﻿<div class="pagetitle d-flex justify-content-between align-items-center mb-3">
-    <h1 class="m-0">MeetingType Table</h1>
+﻿@{
+    ViewData["Title"] = "Meeting Type List";
+}
+
+<div class="pagetitle d-flex justify-content-between align-items-center mb-3">
+    <h1 class="m-0">Meeting Type Table</h1>
 
     <a asp-controller="MeetingType"
        asp-action="MeetingTypeAddEdit"
@@ -7,13 +11,12 @@
         <i class="bi bi-plus-circle"></i> Add
     </a>
 </div>
+
 <section class="section">
     <div class="row">
         <div class="col-lg-12">
-
             <div class="card">
                 <div class="card-body">
-
                     <!-- Table with stripped rows -->
                     <table class="table datatable">
                         <thead>
@@ -27,233 +30,34 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Project Review Meeting</td>
-                                <td>Review progress of ongoing projects</td>
-                                <td>2023-01-15 09:30:00</td>
-                                <td>2024-10-05 14:20:00</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Planning Session</td>
-                                <td>Strategic planning and roadmap discussions</td>
-                                <td>2023-01-15 10:15:00</td>
-                                <td>2024-09-18 11:45:00</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Faculty Meeting</td>
-                                <td>Regular faculty coordination and updates</td>
-                                <td>2023-02-10 08:45:00</td>
-                                <td>2024-11-12 16:30:00</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Department Meeting</td>
-                                <td>Department-level coordination and decision making</td>
-                                <td>2023-02-10 09:00:00</td>
-                                <td>2024-10-22 10:15:00</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>Budget Review</td>
-                                <td>Financial planning and budget allocation discussions</td>
-                                <td>2023-03-05 14:30:00</td>
-                                <td>2024-11-05 13:40:00</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td>Training Workshop</td>
-                                <td>Faculty development and training sessions</td>
-                                <td>2023-03-20 11:20:00</td>
-                                <td>2024-09-30 15:25:00</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>7</td>
-                                <td>Research Committee</td>
-                                <td>Research proposals and grant discussions</td>
-                                <td>2023-04-12 10:00:00</td>
-                                <td>2024-10-18 09:50:00</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>8</td>
-                                <td>Exam Coordination</td>
-                                <td>Examination schedule and paper setting meetings</td>
-                                <td>2023-05-08 13:15:00</td>
-                                <td>2024-11-08 14:10:00</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>9</td>
-                                <td>Technical Review</td>
-                                <td>Technical equipment and infrastructure reviews</td>
-                                <td>2023-05-22 15:45:00</td>
-                                <td>2024-10-30 11:35:00</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>10</td>
-                                <td>Library Committee</td>
-                                <td>Library resources and acquisition meetings</td>
-                                <td>2023-06-10 09:30:00</td>
-                                <td>2024-09-25 12:20:00</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>11</td>
-                                <td>Annual Review</td>
-                                <td>Annual performance and department reviews</td>
-                                <td>2023-07-05 14:00:00</td>
-                                <td>2024-11-15 10:45:00</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>12</td>
-                                <td>Student Feedback</td>
-                                <td>Student grievance and feedback committee meetings</td>
-                                <td>2023-08-18 11:10:00</td>
-                                <td>2024-10-12 16:05:00</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>13</td>
-                                <td>Project Discussion</td>
-                                <td>Student project evaluation and guidance meetings</td>
-                                <td>2023-09-22 10:30:00</td>
-                                <td>2024-11-20 13:25:00</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>14</td>
-                                <td>Administrative Meeting</td>
-                                <td>University administration and policy meetings</td>
-                                <td>2023-10-15 08:45:00</td>
-                                <td>2024-10-28 09:15:00</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>15</td>
-                                <td>Placement Committee</td>
-                                <td>Campus recruitment and placement planning</td>
-                                <td>2023-11-05 14:20:00</td>
-                                <td>2024-11-10 15:40:00</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>16</td>
-                                <td>Research Meeting</td>
-                                <td>Research publication and patent discussions</td>
-                                <td>2023-12-12 11:45:00</td>
-                                <td>2024-10-05 14:30:00</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>17</td>
-                                <td>Faculty Development</td>
-                                <td>Faculty orientation and development programs</td>
-                                <td>2024-01-10 09:15:00</td>
-                                <td>2024-11-18 10:50:00</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>18</td>
-                                <td>Industry Collaboration</td>
-                                <td>Industry partnership and MoU discussions</td>
-                                <td>2024-01-25 15:30:00</td>
-                                <td>2024-10-15 12:25:00</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>19</td>
-                                <td>Quality Assurance</td>
-                                <td>NAAC and quality assurance committee meetings</td>
-                                <td>2024-02-14 10:00:00</td>
-                                <td>2024-11-05 14:15:00</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>20</td>
-                                <td>Guest Lecture</td>
-                                <td>Invited talks and guest lecture sessions</td>
-                                <td>2024-03-08 13:20:00</td>
-                                <td>2024-10-22 11:10:00</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
+                            @if (ViewBag.MeetingTypes != null)
+                            {
+                                @foreach (var meetingType in ViewBag.MeetingTypes as List<MOM_Project.Models.MeetingTypeModel>)
+                                {
+                                    <tr>
+                                        <td>@meetingType.MeetingTypeID</td>
+                                        <td>@meetingType.MeetingTypeName</td>
+                                        <td>@meetingType.Remarks</td>
+                                        <td>@meetingType.Created.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                                        <td>@meetingType.Modified.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-primary">Edit</button>
+                                            <button class="btn btn-sm btn-danger">Delete</button>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="6" class="text-center">No meeting types found</td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                     <!-- End Table with stripped rows -->
-
                 </div>
             </div>
-
         </div>
     </div>
 </section>

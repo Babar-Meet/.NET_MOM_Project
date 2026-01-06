@@ -943,7 +943,6 @@ B:\B-Tech\Sem_6\.net\Project_Final\.NET_MOM_Project\MOM_Project\obj\Debug\net10.
 B:\B-Tech\Sem_6\.net\Project_Final\.NET_MOM_Project\MOM_Project\obj\Debug\net10.0\MOM_Project.pdb
 B:\B-Tech\Sem_6\.net\Project_Final\.NET_MOM_Project\MOM_Project\obj\Debug\net10.0\MOM_Project.genruntimeconfig.cache
 B:\B-Tech\Sem_6\.net\Project_Final\.NET_MOM_Project\MOM_Project\obj\Debug\net10.0\ref\MOM_Project.dll
-B:\B-Tech\Sem_6\.net\Project_Final\.NET_MOM_Project\MOM_Project\obj\Debug\net10.0\compressed\3rxupp0883-{0}-xk3vebvokr-xk3vebvokr.gz
 B:\_Git\DEV\Meet86\.NET_MOM_Project\bin\Debug\net10.0\appsettings.Development.json
 B:\_Git\DEV\Meet86\.NET_MOM_Project\bin\Debug\net10.0\appsettings.json
 B:\_Git\DEV\Meet86\.NET_MOM_Project\bin\Debug\net10.0\MOM_Project.staticwebassets.runtime.json
@@ -1418,3 +1417,5 @@ B:\_Git\DEV\Meet86\.NET_MOM_Project\obj\Debug\net10.0\MOM_Project.pdb
 B:\_Git\DEV\Meet86\.NET_MOM_Project\obj\Debug\net10.0\MOM_Project.genruntimeconfig.cache
 B:\_Git\DEV\Meet86\.NET_MOM_Project\obj\Debug\net10.0\ref\MOM_Project.dll
 B:\_Git\DEV\Meet86\.NET_MOM_Project\obj\Debug\net10.0\compressed\3rxupp0883-{0}-9pjlg8ifyp-9pjlg8ifyp.gz
+B:\B-Tech\Sem_6\.net\Project_Final\.NET_MOM_Project\MOM_Project\obj\Debug\net10.0\MOM_Project.sourcelink.json
+B:\B-Tech\Sem_6\.net\Project_Final\.NET_MOM_Project\MOM_Project\obj\Debug\net10.0\compressed\3rxupp0883-{0}-9pjlg8ifyp-9pjlg8ifyp.gz

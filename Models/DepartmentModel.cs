@@ -6,13 +6,13 @@
 
 
 
-        int DepartmentID { get; set; }
+        public int DepartmentID { get; set; }
 
-        string DepartmentName { get; set; }
+        public string DepartmentName { get; set; }
 
-        DateTime Created { get; set; }
+        public DateTime Created { get; set; }
 
-        DateTime Modified { get; set; }
+        public DateTime Modified { get; set; }
 
     } 
 

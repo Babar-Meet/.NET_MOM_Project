@@ -2,17 +2,23 @@
     <div class="card-body">
         <h5 class="card-title">Vertical Form</h5>
 
-        <!-- Vertical Form -->
         <form class="row g-3">
             <div class="col-12">
                 <label for="inputNanme4" class="form-label">Department Name</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" id="inputNanme4">
             </div>
+
             <div class="text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>
-                <button type="reset" class="btn btn-secondary">Reset</button>
-            </div>
-        </form><!-- Vertical Form -->
 
+                <button type="reset" class="btn btn-secondary">Reset</button>
+
+                <a asp-controller="Department"
+                   asp-action="DepartmentList"
+                   class="btn btn-danger">
+                    Cancel
+                </a>
+            </div>
+        </form>
     </div>
 </div>

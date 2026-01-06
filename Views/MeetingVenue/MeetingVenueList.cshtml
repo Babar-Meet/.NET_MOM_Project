@@ -1,5 +1,9 @@
-﻿<div class="pagetitle d-flex justify-content-between align-items-center mb-3">
-    <h1 class="m-0">MeetingVenue Table</h1>
+﻿@{
+    ViewData["Title"] = "Meeting Venue List";
+}
+
+<div class="pagetitle d-flex justify-content-between align-items-center mb-3">
+    <h1 class="m-0">Meeting Venue Table</h1>
 
     <a asp-controller="MeetingVenue"
        asp-action="MeetingVenueAddEdit"
@@ -7,13 +11,12 @@
         <i class="bi bi-plus-circle"></i> Add
     </a>
 </div>
+
 <section class="section">
     <div class="row">
         <div class="col-lg-12">
-
             <div class="card">
                 <div class="card-body">
-
                     <!-- Table with stripped rows -->
                     <table class="table datatable">
                         <thead>
@@ -26,263 +29,33 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Conference Room A (Room 101)</td>
-                                <td>2023-01-10 09:00:00</td>
-                                <td>2024-11-05 14:20:00</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Conference Room B (Room 102)</td>
-                                <td>2023-01-10 09:15:00</td>
-                                <td>2024-10-18 11:30:00</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Conference Room C (Room 103)</td>
-                                <td>2023-01-10 09:30:00</td>
-                                <td>2024-09-22 16:45:00</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Seminar Hall A</td>
-                                <td>2023-02-05 10:00:00</td>
-                                <td>2024-11-12 10:15:00</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>Seminar Hall B</td>
-                                <td>2023-02-05 10:15:00</td>
-                                <td>2024-10-28 14:30:00</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td>Auditorium (Main)</td>
-                                <td>2023-02-15 08:45:00</td>
-                                <td>2024-11-08 09:40:00</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>7</td>
-                                <td>Mini Auditorium</td>
-                                <td>2023-03-10 14:20:00</td>
-                                <td>2024-10-15 13:25:00</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>8</td>
-                                <td>Principal's Office</td>
-                                <td>2023-03-12 11:10:00</td>
-                                <td>2024-11-10 15:50:00</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>9</td>
-                                <td>Principal's Conference Room</td>
-                                <td>2023-03-12 11:30:00</td>
-                                <td>2024-10-22 10:05:00</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>10</td>
-                                <td>Training Room 1</td>
-                                <td>2023-04-05 09:45:00</td>
-                                <td>2024-11-15 11:20:00</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>11</td>
-                                <td>Training Room 2</td>
-                                <td>2023-04-05 10:00:00</td>
-                                <td>2024-09-30 14:15:00</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>12</td>
-                                <td>Training Room 3</td>
-                                <td>2023-04-05 10:15:00</td>
-                                <td>2024-10-10 16:30:00</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>13</td>
-                                <td>Faculty Lounge</td>
-                                <td>2023-05-20 13:00:00</td>
-                                <td>2024-11-05 12:40:00</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>14</td>
-                                <td>Library Conference Room</td>
-                                <td>2023-06-08 10:30:00</td>
-                                <td>2024-10-18 09:55:00</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>15</td>
-                                <td>Project Room 1</td>
-                                <td>2023-06-15 14:45:00</td>
-                                <td>2024-11-12 13:10:00</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>16</td>
-                                <td>Project Room 2</td>
-                                <td>2023-06-15 15:00:00</td>
-                                <td>2024-10-25 11:25:00</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>17</td>
-                                <td>Research Center Room 301</td>
-                                <td>2023-07-10 11:20:00</td>
-                                <td>2024-11-08 14:50:00</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>18</td>
-                                <td>Research Center Room 302</td>
-                                <td>2023-07-10 11:35:00</td>
-                                <td>2024-10-30 10:40:00</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>19</td>
-                                <td>Lab Complex Room 205</td>
-                                <td>2023-08-22 09:10:00</td>
-                                <td>2024-11-15 15:15:00</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>20</td>
-                                <td>Examination Hall</td>
-                                <td>2023-09-05 08:30:00</td>
-                                <td>2024-10-20 12:20:00</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>21</td>
-                                <td>Placement Cell Office</td>
-                                <td>2023-10-12 13:45:00</td>
-                                <td>2024-11-10 16:05:00</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>22</td>
-                                <td>Virtual - Zoom Meeting</td>
-                                <td>2023-11-15 10:00:00</td>
-                                <td>2024-11-18 14:30:00</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>23</td>
-                                <td>Virtual - Microsoft Teams</td>
-                                <td>2023-11-15 10:15:00</td>
-                                <td>2024-11-05 11:45:00</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>24</td>
-                                <td>Virtual - Google Meet</td>
-                                <td>2023-11-20 14:20:00</td>
-                                <td>2024-10-28 13:10:00</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>25</td>
-                                <td>Virtual - Webex</td>
-                                <td>2024-01-10 09:30:00</td>
-                                <td>2024-11-12 10:50:00</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
+                            @if (ViewBag.MeetingVenues != null)
+                            {
+                                @foreach (var venue in ViewBag.MeetingVenues as List<MOM_Project.Models.MeetingVenueModel>)
+                                {
+                                    <tr>
+                                        <td>@venue.MeetingVenueID</td>
+                                        <td>@venue.MeetingVenueName</td>
+                                        <td>@venue.Created.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                                        <td>@venue.Modified.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-primary">Edit</button>
+                                            <button class="btn btn-sm btn-danger">Delete</button>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="5" class="text-center">No meeting venues found</td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                     <!-- End Table with stripped rows -->
-
                 </div>
             </div>
-
         </div>
     </div>
 </section>

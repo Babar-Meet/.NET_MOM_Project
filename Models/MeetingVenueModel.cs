@@ -2,9 +2,9 @@
 {
     public class MeetingVenueModel
     {
-        int MeetingVenueID { get; set; }
-        string MeetingVenueName { get; set; }
-        DateTime Created { get; set; }
-        DateTime Modified { get; set; }
+        public int MeetingVenueID { get; set; }
+        public string MeetingVenueName { get; set; }
+        public DateTime Created { get; set; }
+        public DateTime Modified { get; set; }
     }
 }
