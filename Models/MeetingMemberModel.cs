@@ -4,14 +4,26 @@ namespace MOM_Project.Models
 {
     public class MeetingMemberModel
     {
-        int MeetingMemberID { get; set; }
-        int MeetingID { get; set; }
-        int StaffID { get; set; }
-        bool IsPresent { get; set; }
-        string? Remarks { get; set; }
-        DateTime Created { get; set; }
-        DateTime Modified { get; set; }
+        [Key]
+        public int MeetingMemberID { get; set; }
 
+        [Required(ErrorMessage = "Meeting ID is required")]
+        [Range(1, int.MaxValue, ErrorMessage = "Meeting ID must be a positive number")]
+        public int MeetingID { get; set; }
 
+        [Required(ErrorMessage = "Staff ID is required")]
+        [Range(1, int.MaxValue, ErrorMessage = "Staff ID must be a positive number")]
+        public int StaffID { get; set; }
+
+        public bool IsPresent { get; set; }
+
+        [MaxLength(500, ErrorMessage = "Remarks cannot exceed 500 characters")]
+        public string? Remarks { get; set; }
+
+        [Required(ErrorMessage = "Creation date is required")]
+        public DateTime Created { get; set; }
+
+        [Required(ErrorMessage = "Modification date is required")]
+        public DateTime Modified { get; set; }
     }
 }

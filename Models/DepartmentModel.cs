@@ -4,23 +4,18 @@ namespace MOM_Project.Models
 {
     public class DepartmentModel
     {
+        [Key]
+        [Required(ErrorMessage = "Department ID is required")]
+        public int DepartmentID { get; set; }
 
+        [Required(ErrorMessage = "Department name is required")]
+        [StringLength(100, MinimumLength = 2, ErrorMessage = "Department name must be between 2 and 100 characters")]
+        public string DepartmentName { get; set; }
 
+        [Required(ErrorMessage = "Creation date is required")]
+        public DateTime Created { get; set; }
 
-
-        int DepartmentID { get; set; }
-
-        string DepartmentName { get; set; }
-
-        DateTime Created { get; set; }
-
-        DateTime Modified { get; set; }
-
-    } 
-
+        [Required(ErrorMessage = "Modification date is required")]
+        public DateTime Modified { get; set; }
+    }
 }
-
-/*
-Referances
-             https://www.youtube.com/watch?v=s4AU9xGe4yg&list=PL0_CROGOai7vP5mrOhyNncLtyOltUnGlB&index=4 
-*/
