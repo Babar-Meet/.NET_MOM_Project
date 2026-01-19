@@ -1,10 +1,20 @@
-﻿namespace MOM_Project.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace MOM_Project.Models
 {
     public class MeetingVenueModel
     {
-        int MeetingVenueID { get; set; }
-        string MeetingVenueName { get; set; }
-        DateTime Created { get; set; }
-        DateTime Modified { get; set; }
+        [Key]
+        public int MeetingVenueID { get; set; }
+
+        [Required(ErrorMessage = "Meeting venue name is required")]
+        [MaxLength(200, ErrorMessage = "Meeting venue name cannot exceed 200 characters")]
+        public string MeetingVenueName { get; set; }
+
+        [Required(ErrorMessage = "Creation date is required")]
+        public DateTime Created { get; set; }
+
+        [Required(ErrorMessage = "Modification date is required")]
+        public DateTime Modified { get; set; }
     }
 }

@@ -1,19 +1,22 @@
-﻿<div class="pagetitle d-flex justify-content-between align-items-center mb-3">
+﻿@{
+    ViewData["Title"] = "Meeting List";
+}
+
+<div class="pagetitle d-flex justify-content-between align-items-center mb-3">
     <h1 class="m-0">Meeting Table</h1>
 
-    <a asp-controller="Meeting"
+    <a asp-controller="Meetings"
        asp-action="MeetingAddEdit"
        class="btn btn-primary">
         <i class="bi bi-plus-circle"></i> Add
     </a>
 </div>
+
 <section class="section">
     <div class="row">
         <div class="col-lg-12">
-
             <div class="card">
                 <div class="card-body">
-
                     <!-- Table with stripped rows -->
                     <table class="table datatable">
                         <thead>
@@ -34,373 +37,67 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>2024-11-05 14:30:00</td>
-                                <td>Conference Room A (Room 101)</td>
-                                <td>Project Review Meeting</td>
-                                <td>Computer Science & Engineering</td>
-                                <td>Quarterly project status review meeting for final year students</td>
-                                <td><a href="#">project_review.pdf</a></td>
-                                <td>2024-10-28 10:15:00</td>
-                                <td>2024-11-05 16:45:00</td>
-                                <td><span class="badge bg-success">Completed</span></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>2024-11-10 09:00:00</td>
-                                <td>Virtual - Zoom Meeting</td>
-                                <td>Planning Session</td>
-                                <td>Information Technology</td>
-                                <td>2025 Academic year planning and curriculum updates</td>
-                                <td></td>
-                                <td>2024-10-25 14:30:00</td>
-                                <td>2024-11-08 11:20:00</td>
-                                <td><span class="badge bg-primary">Upcoming</span></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>2024-11-15 11:00:00</td>
-                                <td>Seminar Hall B</td>
-                                <td>Faculty Meeting</td>
-                                <td>Mechanical Engineering</td>
-                                <td>Faculty development program discussion and training schedule</td>
-                                <td><a href="#">faculty_dev.pdf</a></td>
-                                <td>2024-11-01 09:45:00</td>
-                                <td>2024-11-01 09:45:00</td>
-                                <td><span class="badge bg-primary">Upcoming</span></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>2024-10-20 15:00:00</td>
-                                <td>Principal's Office</td>
-                                <td>Budget Review</td>
-                                <td>Administration</td>
-                                <td>Annual budget allocation review for all departments</td>
-                                <td><a href="#">budget_2025.xlsx</a></td>
-                                <td>2024-10-10 13:20:00</td>
-                                <td>2024-10-21 10:30:00</td>
-                                <td><span class="badge bg-success">Completed</span></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>2024-11-18 10:00:00</td>
-                                <td>Training Room 3</td>
-                                <td>Training Workshop</td>
-                                <td>Humanities & Social Sciences</td>
-                                <td>Research methodology workshop for new faculty members</td>
-                                <td></td>
-                                <td>2024-10-30 16:45:00</td>
-                                <td>2024-11-10 14:15:00</td>
-                                <td><span class="badge bg-warning">Cancelled</span></td>
-                                <td>2024-11-10 14:15:00</td>
-                                <td>Key speaker unavailable due to health reasons</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td>2024-10-25 13:30:00</td>
-                                <td>Conference Room C (Room 103)</td>
-                                <td>Department Meeting</td>
-                                <td>Electrical Engineering</td>
-                                <td>Curriculum revision meeting for B.Tech program</td>
-                                <td><a href="#">curriculum_update.docx</a></td>
-                                <td>2024-10-15 11:10:00</td>
-                                <td>2024-10-26 09:20:00</td>
-                                <td><span class="badge bg-success">Completed</span></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>7</td>
-                                <td>2024-11-22 14:00:00</td>
-                                <td>Virtual - Microsoft Teams</td>
-                                <td>Research Committee</td>
-                                <td>Physics</td>
-                                <td>Research grant proposal discussion and funding allocation</td>
-                                <td><a href="#">grant_proposal.pdf</a></td>
-                                <td>2024-11-05 10:30:00</td>
-                                <td>2024-11-05 10:30:00</td>
-                                <td><span class="badge bg-primary">Upcoming</span></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>8</td>
-                                <td>2024-11-08 16:00:00</td>
-                                <td>Examination Hall</td>
-                                <td>Exam Coordination</td>
-                                <td>Mathematics</td>
-                                <td>Final exam schedule finalization and paper setting guidelines</td>
-                                <td><a href="#">exam_schedule.pdf</a></td>
-                                <td>2024-10-29 14:45:00</td>
-                                <td>2024-11-09 10:10:00</td>
-                                <td><span class="badge bg-success">Completed</span></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>9</td>
-                                <td>2024-11-12 09:30:00</td>
-                                <td>Lab Complex Room 205</td>
-                                <td>Technical Review</td>
-                                <td>Chemistry</td>
-                                <td>Lab equipment procurement review and safety audit</td>
-                                <td><a href="#">lab_equipment.xlsx</a></td>
-                                <td>2024-11-02 15:20:00</td>
-                                <td>2024-11-02 15:20:00</td>
-                                <td><span class="badge bg-primary">Upcoming</span></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>10</td>
-                                <td>2024-10-30 11:00:00</td>
-                                <td>Library Conference Room</td>
-                                <td>Library Committee</td>
-                                <td>Library & Information Science</td>
-                                <td>New book acquisition discussion and digital resource planning</td>
-                                <td><a href="#">book_list.xlsx</a></td>
-                                <td>2024-10-20 12:30:00</td>
-                                <td>2024-10-31 08:45:00</td>
-                                <td><span class="badge bg-success">Completed</span></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>11</td>
-                                <td>2024-11-25 10:00:00</td>
-                                <td>Auditorium (Main)</td>
-                                <td>Annual Review</td>
-                                <td>Business Administration</td>
-                                <td>Annual department performance review and planning for next year</td>
-                                <td></td>
-                                <td>2024-11-10 09:15:00</td>
-                                <td>2024-11-18 16:30:00</td>
-                                <td><span class="badge bg-warning">Cancelled</span></td>
-                                <td>2024-11-18 16:30:00</td>
-                                <td>Venue unavailable due to maintenance work</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>12</td>
-                                <td>2024-11-14 15:30:00</td>
-                                <td>Virtual - Google Meet</td>
-                                <td>Student Feedback</td>
-                                <td>Student Affairs</td>
-                                <td>Student grievance committee meeting and feedback analysis</td>
-                                <td><a href="#">feedback_report.pdf</a></td>
-                                <td>2024-11-03 13:40:00</td>
-                                <td>2024-11-03 13:40:00</td>
-                                <td><span class="badge bg-primary">Upcoming</span></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>13</td>
-                                <td>2024-11-20 13:00:00</td>
-                                <td>Project Room 1</td>
-                                <td>Project Discussion</td>
-                                <td>Civil Engineering</td>
-                                <td>Final year project evaluation and guidance session</td>
-                                <td><a href="#">project_list.xlsx</a></td>
-                                <td>2024-11-05 14:25:00</td>
-                                <td>2024-11-05 14:25:00</td>
-                                <td><span class="badge bg-primary">Upcoming</span></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>14</td>
-                                <td>2024-10-28 10:30:00</td>
-                                <td>Principal's Conference Room</td>
-                                <td>Administrative Meeting</td>
-                                <td>Administration</td>
-                                <td>University administrative committee meeting for policy updates</td>
-                                <td><a href="#">policy_updates.pdf</a></td>
-                                <td>2024-10-18 11:00:00</td>
-                                <td>2024-10-29 09:45:00</td>
-                                <td><span class="badge bg-success">Completed</span></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>15</td>
-                                <td>2024-11-17 09:00:00</td>
-                                <td>Placement Cell Office</td>
-                                <td>Placement Committee</td>
-                                <td>Placement Cell</td>
-                                <td>Campus recruitment planning and company tie-ups discussion</td>
-                                <td><a href="#">placement_plan.xlsx</a></td>
-                                <td>2024-11-01 16:10:00</td>
-                                <td>2024-11-01 16:10:00</td>
-                                <td><span class="badge bg-primary">Upcoming</span></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>16</td>
-                                <td>2024-11-06 14:00:00</td>
-                                <td>Research Center Room 302</td>
-                                <td>Research Meeting</td>
-                                <td>Research & Development</td>
-                                <td>Patent filing process discussion and research publication planning</td>
-                                <td><a href="#">patent_docs.zip</a></td>
-                                <td>2024-10-27 10:50:00</td>
-                                <td>2024-11-07 11:30:00</td>
-                                <td><span class="badge bg-success">Completed</span></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>17</td>
-                                <td>2024-11-28 11:30:00</td>
-                                <td>Faculty Lounge</td>
-                                <td>Faculty Development</td>
-                                <td>Computer Science & Engineering</td>
-                                <td>New faculty orientation program and mentoring session</td>
-                                <td></td>
-                                <td>2024-11-10 13:15:00</td>
-                                <td>2024-11-10 13:15:00</td>
-                                <td><span class="badge bg-primary">Upcoming</span></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>18</td>
-                                <td>2024-10-22 16:30:00</td>
-                                <td>Virtual - Webex</td>
-                                <td>Industry Collaboration</td>
-                                <td>Information Technology</td>
-                                <td>Industry partnership program discussion and MoU signing</td>
-                                <td><a href="#">industry_mou.pdf</a></td>
-                                <td>2024-10-12 09:30:00</td>
-                                <td>2024-10-23 08:45:00</td>
-                                <td><span class="badge bg-success">Completed</span></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>19</td>
-                                <td>2024-11-19 15:00:00</td>
-                                <td>Conference Room B (Room 102)</td>
-                                <td>Quality Assurance</td>
-                                <td>Mechanical Engineering</td>
-                                <td>NAAC preparation meeting and documentation review</td>
-                                <td><a href="#">naac_docs.zip</a></td>
-                                <td>2024-11-03 11:40:00</td>
-                                <td>2024-11-03 11:40:00</td>
-                                <td><span class="badge bg-primary">Upcoming</span></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>20</td>
-                                <td>2024-11-13 10:00:00</td>
-                                <td>Seminar Hall A</td>
-                                <td>Guest Lecture</td>
-                                <td>Electrical Engineering</td>
-                                <td>Invited talk by industry expert on renewable energy trends</td>
-                                <td></td>
-                                <td>2024-10-30 14:20:00</td>
-                                <td>2024-10-30 14:20:00</td>
-                                <td><span class="badge bg-warning">Cancelled</span></td>
-                                <td>2024-11-05 09:15:00</td>
-                                <td>Guest speaker's flight cancelled due to weather conditions</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
+                            @if (ViewBag.Meetings != null)
+                            {
+                                @foreach (var meeting in ViewBag.Meetings as List<MOM_Project.Models.MeetingsModel>)
+                                {
+                                    <tr>
+                                        <td>@meeting.MeetingID</td>
+                                        <td>@meeting.MeetingDate.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                                        <td>@meeting.MeetingVenue</td>
+                                        <td>@meeting.MeetingType</td>
+                                        <td>@meeting.Department</td>
+                                        <td>@meeting.MeetingDescription</td>
+                                        <td>
+                                            @if (!string.IsNullOrEmpty(meeting.DocumentPath))
+                                            {
+                                                <a href="#">@meeting.DocumentPath</a>
+                                            }
+                                        </td>
+                                        <td>@meeting.Created.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                                        <td>@meeting.Modified.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                                        <td>
+                                            @{
+                                                // Determine status based on IsCancelled and date
+                                                if (meeting.IsCancelled == true)
+                                                {
+                                                    <span class="badge bg-warning">Cancelled</span>
+                                                }
+                                                else if (meeting.MeetingDate < DateTime.Now)
+                                                {
+                                                    <span class="badge bg-success">Completed</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="badge bg-primary">Upcoming</span>
+                                                }
+                                            }
+                                        </td>
+                                        <td>
+                                            @if (meeting.CancellationDateTime.HasValue)
+                                            {
+                                                @meeting.CancellationDateTime.Value.ToString("yyyy-MM-dd HH:mm:ss")
+                                            }
+                                        </td>
+                                        <td>@meeting.CancellationReason</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-primary">Edit</button>
+                                            <button class="btn btn-sm btn-danger">Delete</button>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="13" class="text-center">No meetings found</td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                     <!-- End Table with stripped rows -->
-
                 </div>
             </div>
-
         </div>
     </div>
 </section>
