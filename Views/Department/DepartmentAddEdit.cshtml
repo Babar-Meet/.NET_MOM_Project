@@ -1,11 +1,14 @@
-﻿<div class="card">
+﻿@model MOM_Project.Models.DepartmentModel;
+
+<div class="card">
     <div class="card-body">
         <h5 class="card-title">Vertical Form</h5>
 
-        <form class="row g-3">
+        <form class="row g-3" asp-action="saveDept">
             <div class="col-12">
-                <label for="inputNanme4" class="form-label">Department Name</label>
-                <input type="text" class="form-control" id="inputNanme4">
+                <label for="inputNanme4" class="form-label" asp-for="DepartmentName">Department Name</label>
+                <input type="text" class="form-control" id="inputNanme4" asp-for="DepartmentName">
+                <span asp-validation-for="DepartmentName"></span>
             </div>
 
             <div class="text-center">

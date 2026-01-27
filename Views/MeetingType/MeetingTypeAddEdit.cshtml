@@ -1,23 +1,25 @@
-﻿<div class="card">
+﻿@model MOM_Project.Models.MeetingTypeModel
+
+<div class="card">
     <div class="card-body">
         <h5 class="card-title">Vertical Form</h5>
 
-        <form class="row g-3">
+        <form class="row g-3" asp-action="saveMeetingType">
             <div class="col-12">
-                <label for="inputNanme4" class="form-label">Meeting Type Name</label>
-                <input type="text" class="form-control" id="inputNanme4">
+                <label class="form-label" asp-for="MeetingTypeName">Meeting Type Name</label>
+                <input type="text" class="form-control" asp-for="MeetingTypeName">
+                <span asp-validation-for="MeetingTypeName"></span>
             </div>
 
             <div class="col-12">
-                <label for="inputEmail4" class="form-label">Remarks</label>
-                <input type="email" class="form-control" id="inputEmail4">
+                <label class="form-label" asp-for="Remarks">Remarks</label>
+                <textarea class="form-control" rows="3" asp-for="Remarks"></textarea>
+                <span asp-validation-for="Remarks"></span>
             </div>
 
             <div class="text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>
-
                 <button type="reset" class="btn btn-secondary">Reset</button>
-
                 <a asp-controller="MeetingType"
                    asp-action="MeetingTypeList"
                    class="btn btn-danger">

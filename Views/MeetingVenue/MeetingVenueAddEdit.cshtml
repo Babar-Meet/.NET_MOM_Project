@@ -1,11 +1,14 @@
-﻿<div class="card">
+﻿@model MOM_Project.Models.MeetingVenueModel
+
+<div class="card">
     <div class="card-body">
         <h5 class="card-title">Vertical Form</h5>
 
-        <form class="row g-3">
+        <form class="row g-3" asp-action="saveMeetingVenue">
             <div class="col-12">
-                <label for="inputNanme4" class="form-label">Meeting Venue Name</label>
-                <input type="text" class="form-control" id="inputNanme4">
+                <label class="form-label" asp-for="MeetingVenueName">Meeting Venue Name</label>
+                <input type="text" class="form-control" asp-for="MeetingVenueName">
+                <span asp-validation-for="MeetingVenueName"></span>
             </div>
 
             <div class="text-center">

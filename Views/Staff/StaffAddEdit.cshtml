@@ -1,23 +1,38 @@
-﻿<div class="card">
+﻿@model MOM_Project.Models.StaffModel
+
+<div class="card">
     <div class="card-body">
         <h5 class="card-title">Vertical Form</h5>
 
-        <form class="row g-3">
+        <form class="row g-3" asp-action="saveStaff">
             <div class="col-12">
-                <label for="inputName" class="form-label">Staff Name</label>
-                <input type="text" class="form-control" id="inputName">
+                <label class="form-label" asp-for="DepartmentID">Department ID</label>
+                <input type="number" class="form-control" asp-for="DepartmentID">
+                <span asp-validation-for="DepartmentID"></span>
             </div>
+
             <div class="col-12">
-                <label for="inputMobile" class="form-label">Mobile No</label>
-                <input type="text" class="form-control" id="inputMobile">
+                <label class="form-label" asp-for="StaffName">Staff Name</label>
+                <input type="text" class="form-control" asp-for="StaffName">
+                <span asp-validation-for="StaffName"></span>
             </div>
+
             <div class="col-12">
-                <label for="inputEmail" class="form-label">Email Address</label>
-                <input type="email" class="form-control" id="inputEmail">
+                <label class="form-label" asp-for="MobileNo">Mobile No</label>
+                <input type="text" class="form-control" asp-for="MobileNo">
+                <span asp-validation-for="MobileNo"></span>
             </div>
+
             <div class="col-12">
-                <label for="inputRemarks" class="form-label">Remarks</label>
-                <input type="text" class="form-control" id="inputRemarks">
+                <label class="form-label" asp-for="EmailAddress">Email Address</label>
+                <input type="email" class="form-control" asp-for="EmailAddress">
+                <span asp-validation-for="EmailAddress"></span>
+            </div>
+
+            <div class="col-12">
+                <label class="form-label" asp-for="Remarks">Remarks</label>
+                <textarea class="form-control" rows="3" asp-for="Remarks"></textarea>
+                <span asp-validation-for="Remarks"></span>
             </div>
 
             <div class="text-center">
