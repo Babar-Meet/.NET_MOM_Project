@@ -34,7 +34,7 @@ namespace MOM_Project.Models
         [Required(ErrorMessage = "Modification date is required")]
         public DateTime Modified { get; set; }
 
-        public bool? IsCancelled { get; set; }
+        public bool IsCancelled { get; set; }
 
         public DateTime? CancellationDateTime { get; set; }
 
