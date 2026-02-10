@@ -47,8 +47,7 @@
               "RelativeToolTip": "Views\\Meetings\\MeetingList.cshtml",
               "ViewState": "AgIAACoAAAAAAAAAAAAqwDsAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-01-28T03:02:45.205Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-28T03:02:45.205Z"
             },
             {
               "$type": "Document",
@@ -60,8 +59,7 @@
               "RelativeToolTip": "Views\\Meetings\\MeetingAddEdit.cshtml",
               "ViewState": "AgIAABQAAAAAAAAAAAAAwDEAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-01-28T03:02:40.464Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-28T03:02:40.464Z"
             }
           ]
         }
