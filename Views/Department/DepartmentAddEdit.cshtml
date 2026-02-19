@@ -5,6 +5,10 @@
         <h5 class="card-title">Vertical Form</h5>
 
         <form class="row g-3" asp-action="saveDept">
+            <input type="hidden" asp-for="DepartmentID" />
+            <input type="hidden" asp-for="Created" />
+            <input type="hidden" asp-for="Modified" />
+            
             <div class="col-12">
                 <label for="inputNanme4" class="form-label" asp-for="DepartmentName">Department Name</label>
                 <input type="text" class="form-control" id="inputNanme4" asp-for="DepartmentName">

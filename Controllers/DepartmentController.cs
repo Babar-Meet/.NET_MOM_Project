@@ -2,59 +2,167 @@
 using MOM_Project.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 
 namespace MOM_Project.Controllers
 {
     public class DepartmentController : Controller
     {
-        // Static list to store departments (in real app, use database)
-        private static List<DepartmentModel> _departments = new List<DepartmentModel>
+        private readonly IConfiguration _configuration;
+
+        public DepartmentController(IConfiguration configuration)
         {
-            new DepartmentModel { DepartmentID = 1, DepartmentName = "Computer Science & Engineering", Created = DateTime.Parse("2023-03-15 10:30:00"), Modified = DateTime.Parse("2024-11-22 14:15:00") },
-            new DepartmentModel{ DepartmentID= 2, DepartmentName = "Information Technology", Created = DateTime.Parse("2023-05-10 09:45:00"), Modified = DateTime.Parse("2024-10-15 16:20:00") },
-            new DepartmentModel{ DepartmentID= 3, DepartmentName = "Mechanical Engineering", Created = DateTime.Parse("2022-08-22 11:00:00"), Modified = DateTime.Parse("2024-09-30 13:45:00") },
-            new DepartmentModel{ DepartmentID= 4, DepartmentName = "Electrical Engineering", Created = DateTime.Parse("2022-11-05 14:25:00"), Modified = DateTime.Parse("2024-11-10 10:10:00") },
-            new DepartmentModel{ DepartmentID= 5, DepartmentName = "Civil Engineering", Created = DateTime.Parse("2023-01-18 08:15:00"), Modified = DateTime.Parse("2024-08-25 15:30:00") },
-            new DepartmentModel{ DepartmentID= 6, DepartmentName = "Business Administration", Created = DateTime.Parse("2023-06-30 12:45:00"), Modified = DateTime.Parse("2024-12-01 09:00:00") },
-            new DepartmentModel{ DepartmentID= 7, DepartmentName = "Humanities & Social Sciences", Created = DateTime.Parse("2022-09-14 13:20:00"), Modified = DateTime.Parse("2024-07-19 11:40:00") },
-            new DepartmentModel{ DepartmentID= 8, DepartmentName = "Mathematics", Created = DateTime.Parse("2023-02-28 10:10:00"), Modified = DateTime.Parse("2024-11-05 14:50:00") },
-            new DepartmentModel{ DepartmentID= 9, DepartmentName = "Physics", Created = DateTime.Parse("2023-04-12 15:35:00"), Modified = DateTime.Parse("2024-10-28 08:25:00") },
-            new DepartmentModel{ DepartmentID= 10, DepartmentName = "Chemistry", Created = DateTime.Parse("2023-07-25 09:50:00"), Modified = DateTime.Parse("2024-09-12 12:15:00") },
-            new DepartmentModel{ DepartmentID= 11, DepartmentName = "Library & Information Science", Created = DateTime.Parse("2022-12-08 11:30:00"), Modified = DateTime.Parse("2024-08-14 16:45:00") },
-            new DepartmentModel{ DepartmentID= 12, DepartmentName = "Student Affairs", Created = DateTime.Parse("2023-03-05 14:00:00"), Modified = DateTime.Parse("2024-11-30 10:05:00") },
-            new DepartmentModel{ DepartmentID= 13, DepartmentName = "Research & Development", Created = DateTime.Parse("2023-08-20 08:40:00"), Modified = DateTime.Parse("2024-10-10 13:20:00") },
-            new DepartmentModel{ DepartmentID= 14, DepartmentName = "Placement Cell", Created = DateTime.Parse("2023-10-05 12:10:00"), Modified = DateTime.Parse("2024-09-05 15:55:00") },
-            new DepartmentModel{ DepartmentID= 15, DepartmentName = "Administration", Created = DateTime.Parse("2022-10-01 09:00:00"), Modified = DateTime.Parse("2024-12-05 11:30:00") }
-        };
+            _configuration = configuration;
+        }
+
+        private string GetConnectionString()
+        {
+            return _configuration.GetConnectionString("DefaultConnection");
+        }
 
         public IActionResult DepartmentList()
         {
-            ViewBag.Departments = _departments;
+            List<DepartmentModel> departments = new List<DepartmentModel>();
+
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "MOM_Department_GetAll";
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                con.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    DepartmentModel dept = new DepartmentModel();
+                    dept.DepartmentID = Convert.ToInt32(reader["DepartmentID"]);
+                    dept.DepartmentName = reader["DepartmentName"].ToString();
+                    dept.Created = Convert.ToDateTime(reader["Created"]);
+                    dept.Modified = Convert.ToDateTime(reader["Modified"]);
+
+                    departments.Add(dept);
+                }
+
+                reader.Close();
+                con.Close();
+            }
+
+            ViewBag.Departments = departments;
             return View();
         }
 
-        public IActionResult DepartmentAddEdit()
+        public IActionResult DepartmentAddEdit(int? id)
         {
-            return View();
+            DepartmentModel model = new DepartmentModel();
+
+            if (id.HasValue)
+            {
+                using (SqlConnection con = new SqlConnection(GetConnectionString()))
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = con;
+                    cmd.CommandText = "MOM_Department_GetByID";
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    SqlParameter p = new SqlParameter();
+                    p.ParameterName = "@DepartmentID";
+                    p.SqlDbType = System.Data.SqlDbType.Int;
+                    p.Value = id.Value;
+
+                    cmd.Parameters.Add(p);
+
+                    con.Open();
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        model.DepartmentID = Convert.ToInt32(reader["DepartmentID"]);
+                        model.DepartmentName = reader["DepartmentName"].ToString();
+                        model.Created = Convert.ToDateTime(reader["Created"]);
+                        model.Modified = Convert.ToDateTime(reader["Modified"]);
+                    }
+
+                    reader.Close();
+                    con.Close();
+                }
+            }
+
+            return View(model);
         }
 
         [HttpPost]
-        public IActionResult saveDept(DepartmentModel DepartmentModel)
+        public IActionResult saveDept(DepartmentModel model)
         {
             if (ModelState.IsValid)
             {
-                var newId = _departments.Any() ? _departments.Max(d => d.DepartmentID) + 1 : 1;
-                
-                DepartmentModel.DepartmentID = newId;
-                DepartmentModel.Created = DateTime.Now;
-                DepartmentModel.Modified = DateTime.Now;
-                
-                _departments.Add(DepartmentModel);
-                
+                using (SqlConnection con = new SqlConnection(GetConnectionString()))
+                {
+                    SqlCommand cmd = new SqlCommand();
+
+                    if (model.DepartmentID == 0)
+                    {
+                        // Insert new department
+                        cmd.CommandText = "MOM_Department_Insert";
+                    }
+                    else
+                    {
+                        // Update existing department
+                        cmd.CommandText = "MOM_Department_Update";
+                        
+                        SqlParameter p = new SqlParameter();
+                        p.ParameterName = "@DepartmentID";
+                        p.SqlDbType = System.Data.SqlDbType.Int;
+                        p.Value = model.DepartmentID;
+                        cmd.Parameters.Add(p);
+                    }
+
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.Connection = con;
+
+                    SqlParameter pName = new SqlParameter();
+                    pName.ParameterName = "@DepartmentName";
+                    pName.SqlDbType = System.Data.SqlDbType.NVarChar;
+                    pName.Value = model.DepartmentName;
+                    cmd.Parameters.Add(pName);
+
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+
                 return RedirectToAction("DepartmentList");
             }
-            return View("DepartmentAddEdit", DepartmentModel);
+
+            return View("DepartmentAddEdit", model);
+        }
+
+        public IActionResult Delete(int id)
+        {
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "MOM_Department_Delete";
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                SqlParameter p = new SqlParameter();
+                p.ParameterName = "@DepartmentID";
+                p.SqlDbType = System.Data.SqlDbType.Int;
+                p.Value = id;
+
+                cmd.Parameters.Add(p);
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+
+            return RedirectToAction("DepartmentList");
         }
     }
 }

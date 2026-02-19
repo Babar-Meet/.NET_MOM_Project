@@ -34,13 +34,24 @@
                                 @foreach (var department in ViewBag.Departments as List<MOM_Project.Models.DepartmentModel>)
                                 {
                                     <tr>
-                                        <td>@department.DepartmentID</td> <!-- Changed from DepartmentId to DepartmentID -->
+                                        <td>@department.DepartmentID</td>
                                         <td>@department.DepartmentName</td>
                                         <td>@department.Created.ToString("yyyy-MM-dd HH:mm:ss")</td>
                                         <td>@department.Modified.ToString("yyyy-MM-dd HH:mm:ss")</td>
                                         <td>
-                                            <button class="btn btn-sm btn-primary">Edit</button>
-                                            <button class="btn btn-sm btn-danger">Delete</button>
+                                            <a asp-controller="Department"
+                                               asp-action="DepartmentAddEdit"
+                                               asp-route-id="@department.DepartmentID"
+                                               class="btn btn-sm btn-primary">
+                                                Edit
+                                            </a>
+                                            <a asp-controller="Department"
+                                               asp-action="Delete"
+                                               asp-route-id="@department.DepartmentID"
+                                               class="btn btn-sm btn-danger"
+                                               onclick="return confirm('Are you sure you want to delete this department?');">
+                                                Delete
+                                            </a>
                                         </td>
                                     </tr>
                                 }
