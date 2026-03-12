@@ -1,14 +1,12 @@
-﻿@{
+@{
     ViewData["Title"] = "Meeting Member List";
 }
 
 <div class="pagetitle d-flex justify-content-between align-items-center mb-3">
     <h1 class="m-0">Meeting Member Table</h1>
 
-    <a asp-controller="MeetingMember"
-       asp-action="MeetingMemberAddEdit"
-       class="btn btn-primary">
-        <i class="bi bi-plus-circle"></i> Add Meeting Member
+    <a asp-action="MeetingMemberAddEdit" class="btn btn-primary">
+        <i class="bi bi-plus-circle"></i> Add
     </a>
 </div>
 
@@ -17,17 +15,18 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
+                    <div class="mt-3 mb-3">
+                        <input type="text" id="memberSearch" class="form-control" placeholder="Search Members...">
+                    </div>
                     <!-- Table with stripped rows -->
-                    <table class="table datatable">
+                    <table class="table table-striped" id="memberTable">
                         <thead>
                             <tr>
-                                <th>Meeting Member ID</th>
-                                <th>Meeting ID</th>
-                                <th>Staff ID</th>
+                                <th>ID</th>
+                                <th>Meeting Date</th>
+                                <th>Staff Name</th>
                                 <th>Present</th>
                                 <th>Remarks</th>
-                                <th>Created</th>
-                                <th>Modified</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -38,8 +37,8 @@
                                 {
                                     <tr>
                                         <td>@member.MeetingMemberID</td>
-                                        <td>@member.MeetingID</td>
-                                        <td>@member.StaffID</td>
+                                        <td>@(member.MeetingDate?.ToShortDateString() ?? "N/A")</td>
+                                        <td>@member.StaffName</td>
                                         <td>
                                             @if (member.IsPresent)
                                             {
@@ -51,26 +50,27 @@
                                             }
                                         </td>
                                         <td>@member.Remarks</td>
-                                        <td>@member.Created.ToString("yyyy-MM-dd HH:mm:ss")</td>
-                                        <td>@member.Modified.ToString("yyyy-MM-dd HH:mm:ss")</td>
                                         <td>
-                                            <button class="btn btn-sm btn-primary">Edit</button>
-                                            <button class="btn btn-sm btn-danger">Delete</button>
+                                            <a asp-action="MeetingMemberAddEdit" asp-route-id="@member.MeetingMemberID" class="btn btn-sm btn-primary">Edit</a>
+                                            <a asp-action="Delete" asp-route-id="@member.MeetingMemberID" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
                                         </td>
                                     </tr>
                                 }
                             }
-                            else
-                            {
-                                <tr>
-                                    <td colspan="8" class="text-center">No meeting members found</td>
-                                </tr>
-                            }
                         </tbody>
                     </table>
-                    <!-- End Table with stripped rows -->
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+<script>
+    document.getElementById('memberSearch').addEventListener('keyup', function() {
+        let value = this.value.toLowerCase();
+        let rows = document.querySelectorAll('#memberTable tbody tr');
+        rows.forEach(row => {
+            row.style.display = row.innerText.toLowerCase().includes(value) ? '' : 'none';
+        });
+    });
+</script>

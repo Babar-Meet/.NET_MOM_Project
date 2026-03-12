@@ -1,6 +1,6 @@
 --insert meeting store procedure
-create procedure MOM_Meetings_Insert
-	 @MeetingDate DATETIME,
+CREATE OR ALTER PROCEDURE MOM_Meetings_Insert
+     @MeetingDate DATETIME,
     @MeetingVenueID INT,
     @MeetingTypeID INT,
     @DepartmentID INT,
@@ -8,7 +8,7 @@ create procedure MOM_Meetings_Insert
     @DocumentPath NVARCHAR(250)
 as
 begin
-	insert into MOM_Meetings(
+    insert into MOM_Meetings(
                     MeetingDate,
                     MeetingVenueID,
                     MeetingTypeID,
@@ -19,7 +19,7 @@ begin
                     Modified,
                     IsCancelled
                   )
-	       values(
+           values(
                    @MeetingDate,
                    @MeetingVenueID,
                    @MeetingTypeID,
@@ -31,10 +31,10 @@ begin
                     0
                    )
 end;
+GO
 
 --update meeting stored procedure
-go
-create procedure MOM_Meetings_Update
+CREATE OR ALTER PROCEDURE MOM_Meetings_Update
      @MeetingID int,
     @MeetingDate datetime,
     @MeetingVenueID int,
@@ -55,10 +55,10 @@ begin
         Modified = GETDATE()
     where MeetingID = @MeetingID;
 end;
+GO
 
 --meeting cancel stored procedure
-go
-create procedure MOM_Meetings_Cancel
+CREATE OR ALTER PROCEDURE MOM_Meetings_Cancel
     @MeetingID int,
     @CancellationReason nvarchar(250)
 as
@@ -71,42 +71,97 @@ begin
         Modified=GETDATE()
     where MeetingID=@MeetingID
 end;
+GO
 
---delete  meetings stored procedure 
-go
-create procedure MOM_Meetings_Delete
+--delete meetings stored procedure 
+CREATE OR ALTER PROCEDURE MOM_Meetings_Delete
     @MeetingID int
 as
 begin
     delete from MOM_Meetings
     where MeetingID=@MeetingID
 end;
+GO
 
 --get all stored procedure
-go 
-create procedure MOM_Meetings_GetAll
+CREATE OR ALTER PROCEDURE MOM_Meetings_GetAll
 as
 begin
-    select * from MOM_Meetings
+    SELECT m.MeetingID,
+           m.MeetingDate,
+           m.MeetingVenueID,
+           mv.MeetingVenueName,
+           m.MeetingTypeID,
+           mt.MeetingTypeName,
+           m.DepartmentID,
+           d.DepartmentName,
+           m.MeetingDescription,
+           m.DocumentPath,
+           m.Created,
+           m.Modified,
+           m.IsCancelled,
+           m.CancellationDateTime,
+           m.CancellationReason
+    FROM [dbo].[MOM_Meetings] m
+    INNER JOIN [dbo].[MOM_MeetingVenue] mv ON m.MeetingVenueID = mv.MeetingVenueID
+    INNER JOIN [dbo].[MOM_MeetingType] mt ON m.MeetingTypeID = mt.MeetingTypeID
+    INNER JOIN [dbo].[MOM_Department] d ON m.DepartmentID = d.DepartmentID
+    ORDER BY m.MeetingDate DESC
 end;
+GO
 
 --get by id stored procedure
-go
-create procedure MOM_Meetings_GetByID
+CREATE OR ALTER PROCEDURE MOM_Meetings_GetByID
     @MeetingID int
 as
 begin
-    select * from MOM_Meetings
-    where MeetingID=@MeetingID
+    SELECT m.MeetingID,
+           m.MeetingDate,
+           m.MeetingVenueID,
+           mv.MeetingVenueName,
+           m.MeetingTypeID,
+           mt.MeetingTypeName,
+           m.DepartmentID,
+           d.DepartmentName,
+           m.MeetingDescription,
+           m.DocumentPath,
+           m.Created,
+           m.Modified,
+           m.IsCancelled,
+           m.CancellationDateTime,
+           m.CancellationReason
+    FROM [dbo].[MOM_Meetings] m
+    INNER JOIN [dbo].[MOM_MeetingVenue] mv ON m.MeetingVenueID = mv.MeetingVenueID
+    INNER JOIN [dbo].[MOM_MeetingType] mt ON m.MeetingTypeID = mt.MeetingTypeID
+    INNER JOIN [dbo].[MOM_Department] d ON m.DepartmentID = d.DepartmentID
+    where m.MeetingID=@MeetingID
 end;
-
+GO
 
 --get by department store procedure
-go  
-create procedure MOM_Meetings_GetByDepartment
+CREATE OR ALTER PROCEDURE MOM_Meetings_GetByDepartment
     @DepartmentID int
 as
 begin
-    select * from MOM_Meetings
-    where DepartmentID=@DepartmentID
+    SELECT m.MeetingID,
+           m.MeetingDate,
+           m.MeetingVenueID,
+           mv.MeetingVenueName,
+           m.MeetingTypeID,
+           mt.MeetingTypeName,
+           m.DepartmentID,
+           d.DepartmentName,
+           m.MeetingDescription,
+           m.DocumentPath,
+           m.Created,
+           m.Modified,
+           m.IsCancelled,
+           m.CancellationDateTime,
+           m.CancellationReason
+    FROM [dbo].[MOM_Meetings] m
+    INNER JOIN [dbo].[MOM_MeetingVenue] mv ON m.MeetingVenueID = mv.MeetingVenueID
+    INNER JOIN [dbo].[MOM_MeetingType] mt ON m.MeetingTypeID = mt.MeetingTypeID
+    INNER JOIN [dbo].[MOM_Department] d ON m.DepartmentID = d.DepartmentID
+    where m.DepartmentID=@DepartmentID
 end;
+GO

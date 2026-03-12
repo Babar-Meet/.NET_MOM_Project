@@ -1,6 +1,5 @@
-
 --insert meeting type store procedure
-create procedure MOM_MeetingType_Insert
+CREATE OR ALTER PROCEDURE MOM_MeetingType_Insert
 	@MeetingTypeName nvarchar(250),
 	@Remarks nvarchar(250)
 as 
@@ -8,10 +7,10 @@ begin
 	insert into MOM_MeetingType(MeetingTypeName,Remarks)
 	values(@MeetingTypeName,@Remarks)
 end
+GO
 
 --update meeting type store procedure
-go
-create procedure MOM_MeetingType_Update
+CREATE OR ALTER PROCEDURE MOM_MeetingType_Update
 	@MeetingTypeID int,
 	@MeetingTypeName nvarchar(250),
 	@Remarks nvarchar(250)
@@ -23,33 +22,32 @@ begin
 		Remarks=@Remarks
 	where MeetingTypeID=@MeetingTypeID
 end;
+GO
 
 --delete meeting type store procedure
-go 
-create procedure MOM_MeetingType_delete
+CREATE OR ALTER PROCEDURE MOM_MeetingType_delete
 	@MeetingTypeID int
 as
 begin
 	delete from MOM_MeetingType
 	where MeetingTypeID=@MeetingTypeID
 end;
+GO
 
 --get all meeting type store procedure
-go 
-create procedure MOM_MeetingType_GetAll
+CREATE OR ALTER PROCEDURE MOM_MeetingType_GetAll
 as 
 begin
 	select * from MOM_MeetingType;
 end;
+GO
 
 --get by id meeting type stored procedure
-go 
-create procedure MOM_MeetingType_GetByID
+CREATE OR ALTER PROCEDURE MOM_MeetingType_GetByID
 	@MeetingTypeID int
  as
  begin
 	select * from MOM_MeetingType
 	where MeetingTypeID=@MeetingTypeID
 end;
-
-exec MOM_MeetingType_GetAll
+GO

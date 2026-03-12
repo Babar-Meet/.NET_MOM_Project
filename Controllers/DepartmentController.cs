@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using MOM_Project.Models;
 using System;
 using System.Collections.Generic;
@@ -18,7 +18,7 @@ namespace MOM_Project.Controllers
 
         private string GetConnectionString()
         {
-            return _configuration.GetConnectionString("DefaultConnection");
+            return _configuration.GetConnectionString("DefaultConnection") ?? "";
         }
 
         public IActionResult DepartmentList()

@@ -1,161 +1,204 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using MOM_Project.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 
 namespace MOM_Project.Controllers
 {
     public class MeetingsController : Controller
     {
-        // Static list to store meetings (in real app, use database)
-        private static List<MeetingsModel> _meetings = new List<MeetingsModel>
+        private readonly IConfiguration _configuration;
+
+        public MeetingsController(IConfiguration configuration)
         {
-            new MeetingsModel {
-                MeetingID = 1,
-                MeetingDate = DateTime.Parse("2024-11-05 14:30:00"),
-                MeetingVenue = "Conference Room A (Room 101)",
-                MeetingType = "Project Review Meeting",
-                Department = "Computer Science & Engineering",
-                MeetingDescription = "Quarterly project status review meeting for final year students",
-                DocumentPath = "project_review.pdf",
-                Created = DateTime.Parse("2024-10-28 10:15:00"),
-                Modified = DateTime.Parse("2024-11-05 16:45:00"),
-                IsCancelled = false,
-                CancellationDateTime = null,
-                CancellationReason = ""
-            },
-            new MeetingsModel {
-                MeetingID = 2,
-                MeetingDate = DateTime.Parse("2024-11-10 09:00:00"),
-                MeetingVenue = "Virtual - Zoom Meeting",
-                MeetingType = "Planning Session",
-                Department = "Information Technology",
-                MeetingDescription = "2025 Academic year planning and curriculum updates",
-                DocumentPath = "",
-                Created = DateTime.Parse("2024-10-25 14:30:00"),
-                Modified = DateTime.Parse("2024-11-08 11:20:00"),
-                IsCancelled = false,
-                CancellationDateTime = null,
-                CancellationReason = ""
-            },
-            new MeetingsModel {
-                MeetingID = 3,
-                MeetingDate = DateTime.Parse("2024-11-15 11:00:00"),
-                MeetingVenue = "Seminar Hall B",
-                MeetingType = "Faculty Meeting",
-                Department = "Mechanical Engineering",
-                MeetingDescription = "Faculty development program discussion and training schedule",
-                DocumentPath = "faculty_dev.pdf",
-                Created = DateTime.Parse("2024-11-01 09:45:00"),
-                Modified = DateTime.Parse("2024-11-01 09:45:00"),
-                IsCancelled = false,
-                CancellationDateTime = null,
-                CancellationReason = ""
-            },
-            new MeetingsModel {
-                MeetingID = 4,
-                MeetingDate = DateTime.Parse("2024-10-20 15:00:00"),
-                MeetingVenue = "Principal's Office",
-                MeetingType = "Budget Review",
-                Department = "Administration",
-                MeetingDescription = "Annual budget allocation review for all departments",
-                DocumentPath = "budget_2025.xlsx",
-                Created = DateTime.Parse("2024-10-10 13:20:00"),
-                Modified = DateTime.Parse("2024-10-21 10:30:00"),
-                IsCancelled = false,
-                CancellationDateTime = null,
-                CancellationReason = ""
-            },
-            new MeetingsModel {
-                MeetingID = 5,
-                MeetingDate = DateTime.Parse("2024-11-18 10:00:00"),
-                MeetingVenue = "Training Room 3",
-                MeetingType = "Training Workshop",
-                Department = "Humanities & Social Sciences",
-                MeetingDescription = "Research methodology workshop for new faculty members",
-                DocumentPath = "",
-                Created = DateTime.Parse("2024-10-30 16:45:00"),
-                Modified = DateTime.Parse("2024-11-10 14:15:00"),
-                IsCancelled = true,
-                CancellationDateTime = DateTime.Parse("2024-11-10 14:15:00"),
-                CancellationReason = "Key speaker unavailable due to health reasons"
-            },
-            new MeetingsModel {
-                MeetingID = 6,
-                MeetingDate = DateTime.Parse("2024-10-25 13:30:00"),
-                MeetingVenue = "Conference Room C (Room 103)",
-                MeetingType = "Department Meeting",
-                Department = "Electrical Engineering",
-                MeetingDescription = "Curriculum revision meeting for B.Tech program",
-                DocumentPath = "curriculum_update.docx",
-                Created = DateTime.Parse("2024-10-15 11:10:00"),
-                Modified = DateTime.Parse("2024-10-26 09:20:00"),
-                IsCancelled = false,
-                CancellationDateTime = null,
-                CancellationReason = ""
-            },
-            new MeetingsModel {
-                MeetingID = 11,
-                MeetingDate = DateTime.Parse("2024-11-25 10:00:00"),
-                MeetingVenue = "Auditorium (Main)",
-                MeetingType = "Annual Review",
-                Department = "Business Administration",
-                MeetingDescription = "Annual department performance review and planning for next year",
-                DocumentPath = "",
-                Created = DateTime.Parse("2024-11-10 09:15:00"),
-                Modified = DateTime.Parse("2024-11-18 16:30:00"),
-                IsCancelled = true,
-                CancellationDateTime = DateTime.Parse("2024-11-18 16:30:00"),
-                CancellationReason = "Venue unavailable due to maintenance work"
-            },
-            new MeetingsModel {
-                MeetingID = 20,
-                MeetingDate = DateTime.Parse("2024-11-13 10:00:00"),
-                MeetingVenue = "Seminar Hall A",
-                MeetingType = "Guest Lecture",
-                Department = "Electrical Engineering",
-                MeetingDescription = "Invited talk by industry expert on renewable energy trends",
-                DocumentPath = "",
-                Created = DateTime.Parse("2024-10-30 14:20:00"),
-                Modified = DateTime.Parse("2024-10-30 14:20:00"),
-                IsCancelled = true,
-                CancellationDateTime = DateTime.Parse("2024-11-05 09:15:00"),
-                CancellationReason = "Guest speaker's flight cancelled due to weather conditions"
+            _configuration = configuration;
+        }
+
+        private string GetConnectionString()
+        {
+            return _configuration.GetConnectionString("DefaultConnection") ?? "";
+        }
+
+        private void LoadLookupData()
+        {
+            List<MeetingVenueModel> venues = new List<MeetingVenueModel>();
+            List<MeetingTypeModel> types = new List<MeetingTypeModel>();
+            List<DepartmentModel> departments = new List<DepartmentModel>();
+
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                con.Open();
+
+                // Venues
+                using (SqlCommand cmd = new SqlCommand("MOM_MeetingVenue_GetAll", con))
+                {
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    using (SqlDataReader r = cmd.ExecuteReader())
+                    {
+                        while (r.Read()) venues.Add(new MeetingVenueModel { MeetingVenueID = (int)r["MeetingVenueID"], MeetingVenueName = r["MeetingVenueName"].ToString()! });
+                    }
+                }
+
+                // Types
+                using (SqlCommand cmd = new SqlCommand("MOM_MeetingType_GetAll", con))
+                {
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    using (SqlDataReader r = cmd.ExecuteReader())
+                    {
+                        while (r.Read()) types.Add(new MeetingTypeModel { MeetingTypeID = (int)r["MeetingTypeID"], MeetingTypeName = r["MeetingTypeName"].ToString()! });
+                    }
+                }
+
+                // Departments
+                using (SqlCommand cmd = new SqlCommand("MOM_Department_GetAll", con))
+                {
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    using (SqlDataReader r = cmd.ExecuteReader())
+                    {
+                        while (r.Read()) departments.Add(new DepartmentModel { DepartmentID = (int)r["DepartmentID"], DepartmentName = r["DepartmentName"].ToString()! });
+                    }
+                }
+
+                con.Close();
             }
-        };
+
+            ViewBag.Venues = venues;
+            ViewBag.MeetingTypes = types;
+            ViewBag.Departments = departments;
+        }
 
         public IActionResult MeetingList()
         {
-            ViewBag.Meetings = _meetings;
+            List<MeetingsModel> meetings = new List<MeetingsModel>();
+
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                SqlCommand cmd = new SqlCommand("MOM_Meetings_GetAll", con);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    meetings.Add(new MeetingsModel
+                    {
+                        MeetingID = Convert.ToInt32(reader["MeetingID"]),
+                        MeetingDate = Convert.ToDateTime(reader["MeetingDate"]),
+                        MeetingVenueID = Convert.ToInt32(reader["MeetingVenueID"]),
+                        MeetingVenueName = reader["MeetingVenueName"].ToString() ?? string.Empty,
+                        MeetingTypeID = Convert.ToInt32(reader["MeetingTypeID"]),
+                        MeetingTypeName = reader["MeetingTypeName"].ToString() ?? string.Empty,
+                        DepartmentID = Convert.ToInt32(reader["DepartmentID"]),
+                        DepartmentName = reader["DepartmentName"].ToString() ?? string.Empty,
+                        MeetingDescription = reader["MeetingDescription"] != DBNull.Value ? reader["MeetingDescription"].ToString() ?? string.Empty : string.Empty,
+                        DocumentPath = reader["DocumentPath"] != DBNull.Value ? reader["DocumentPath"].ToString() ?? string.Empty : string.Empty,
+                        Created = Convert.ToDateTime(reader["Created"]),
+                        Modified = Convert.ToDateTime(reader["Modified"]),
+                        IsCancelled = Convert.ToBoolean(reader["IsCancelled"]),
+                        CancellationDateTime = reader["CancellationDateTime"] != DBNull.Value ? (DateTime?)Convert.ToDateTime(reader["CancellationDateTime"]) : null,
+                        CancellationReason = reader["CancellationReason"] != DBNull.Value ? reader["CancellationReason"].ToString() ?? string.Empty : string.Empty
+                    });
+                }
+                con.Close();
+            }
+
+            ViewBag.Meetings = meetings;
             return View();
         }
 
-        public IActionResult MeetingAddEdit()
+        public IActionResult MeetingAddEdit(int? id)
         {
-            return View();
+            LoadLookupData();
+            MeetingsModel model = new MeetingsModel { MeetingDate = DateTime.Now };
+
+            if (id.HasValue)
+            {
+                using (SqlConnection con = new SqlConnection(GetConnectionString()))
+                {
+                    SqlCommand cmd = new SqlCommand("MOM_Meetings_GetByID", con);
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@MeetingID", id.Value);
+
+                    con.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        model.MeetingID = Convert.ToInt32(reader["MeetingID"]);
+                        model.MeetingDate = Convert.ToDateTime(reader["MeetingDate"]);
+                        model.MeetingVenueID = Convert.ToInt32(reader["MeetingVenueID"]);
+                        model.MeetingTypeID = Convert.ToInt32(reader["MeetingTypeID"]);
+                        model.DepartmentID = Convert.ToInt32(reader["DepartmentID"]);
+                        model.MeetingDescription = reader["MeetingDescription"] != DBNull.Value ? reader["MeetingDescription"].ToString() : "";
+                        model.DocumentPath = reader["DocumentPath"] != DBNull.Value ? reader["DocumentPath"].ToString() : "";
+                        model.Created = Convert.ToDateTime(reader["Created"]);
+                        model.Modified = Convert.ToDateTime(reader["Modified"]);
+                        model.IsCancelled = Convert.ToBoolean(reader["IsCancelled"]);
+                        model.CancellationDateTime = reader["CancellationDateTime"] != DBNull.Value ? (DateTime?)Convert.ToDateTime(reader["CancellationDateTime"]) : null;
+                        model.CancellationReason = reader["CancellationReason"] != DBNull.Value ? reader["CancellationReason"].ToString() : "";
+                    }
+                    con.Close();
+                }
+            }
+
+            return View(model);
         }
 
         [HttpPost]
-        public IActionResult saveMeeting(MeetingsModel meetingsModel)
+        public IActionResult saveMeeting(MeetingsModel model)
         {
             if (ModelState.IsValid)
             {
-                // Generate new MeetingID
-                var newId = _meetings.Any() ? _meetings.Max(m => m.MeetingID) + 1 : 1;
+                using (SqlConnection con = new SqlConnection(GetConnectionString()))
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-                // Set created and modified dates
-                meetingsModel.MeetingID = newId;
-                meetingsModel.Created = DateTime.Now;
-                meetingsModel.Modified = DateTime.Now;
+                    if (model.MeetingID == 0)
+                    {
+                        cmd.CommandText = "MOM_Meetings_Insert";
+                    }
+                    else
+                    {
+                        cmd.CommandText = "MOM_Meetings_Update";
+                        cmd.Parameters.AddWithValue("@MeetingID", model.MeetingID);
+                    }
 
-                // Add to the list
-                _meetings.Add(meetingsModel);
+                    cmd.Parameters.AddWithValue("@MeetingDate", model.MeetingDate);
+                    cmd.Parameters.AddWithValue("@MeetingVenueID", model.MeetingVenueID);
+                    cmd.Parameters.AddWithValue("@MeetingTypeID", model.MeetingTypeID);
+                    cmd.Parameters.AddWithValue("@DepartmentID", model.DepartmentID);
+                    cmd.Parameters.AddWithValue("@MeetingDescription", model.MeetingDescription ?? (object)DBNull.Value);
+                    cmd.Parameters.AddWithValue("@DocumentPath", model.DocumentPath ?? (object)DBNull.Value);
+                    cmd.Parameters.AddWithValue("@IsCancelled", model.IsCancelled);
+                    cmd.Parameters.AddWithValue("@CancellationDateTime", model.CancellationDateTime ?? (object)DBNull.Value);
+                    cmd.Parameters.AddWithValue("@CancellationReason", model.CancellationReason ?? (object)DBNull.Value);
 
-                // Redirect to list view
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+
                 return RedirectToAction("MeetingList");
             }
-            return View("MeetingAddEdit", meetingsModel);
+            LoadLookupData();
+            return View("MeetingAddEdit", model);
+        }
+
+        public IActionResult Delete(int id)
+        {
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                SqlCommand cmd = new SqlCommand("MOM_Meetings_Delete", con);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@MeetingID", id);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            return RedirectToAction("MeetingList");
         }
     }
-}
+}

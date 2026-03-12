@@ -1,24 +1,20 @@
 --insert meeting member stored procedure
 GO
 
-CREATE PROCEDURE MOM_MeetingMember_Insert
+CREATE OR ALTER PROCEDURE MOM_MeetingMember_Insert
     @MeetingID INT,
     @StaffID INT,
     @IsPresent BIT,
     @Remarks NVARCHAR(250)
 AS
 BEGIN
-    INSERT INTO MOM_MeetingMember (MeetingID, StaffID, IsPresent, Remarks, Created, Modified)
-    VALUES (@MeetingID, @StaffID, @IsPresent, @Remarks, GETDATE(), GETDATE());
+    INSERT INTO MOM_MeetingMember (MeetingID, StaffID, IsPresent, Remarks, Modified)
+    VALUES (@MeetingID, @StaffID, @IsPresent, @Remarks, GETDATE());
 END;
-
-
-
-
+GO
 
 --update meeting member stored procedure--
-go
-create procedure MOM_MeetingMember_Update
+CREATE OR ALTER PROCEDURE MOM_MeetingMember_Update
     @MeetingMemberID INT,
     @MeetingID INT,
     @StaffID INT,
@@ -35,34 +31,55 @@ begin
         Modified=GETDATE()
     where MeetingMemberID=@MeetingMemberID
 end;
-
-
+GO
 
 --delete meeting member stored procedure--
-go
-create procedure MOM_MeetingMember_Delete
+CREATE OR ALTER PROCEDURE MOM_MeetingMember_Delete
     @MeetingMemberID INT
 as
 begin
     delete from MOM_MeetingMember
     where MeetingMemberID = @MeetingMemberID;
 end;
-
+GO
 
 ---getall meeting member stored procedure
-go
-create procedure MOM_MeetingMember_GetAll
+CREATE OR ALTER PROCEDURE MOM_MeetingMember_GetAll
 as
 begin
-        select * from MOM_MeetingMember
+    SELECT mm.MeetingMemberID,
+           mm.MeetingID,
+           m.MeetingDate,
+           mm.StaffID,
+           s.StaffName,
+           mm.IsPresent,
+           mm.Remarks,
+           mm.Created,
+           mm.Modified
+    FROM MOM_MeetingMember mm
+    INNER JOIN MOM_Meetings m ON mm.MeetingID = m.MeetingID
+    INNER JOIN MOM_Staff s ON mm.StaffID = s.StaffID
+    ORDER BY m.MeetingDate DESC, s.StaffName
 end;
+GO
 
 --get by id meeting member stored procedure
-go 
-create procedure MOM_MeetingMember_GetById
-@MeetingMemberID int
+CREATE OR ALTER PROCEDURE MOM_MeetingMember_GetById
+    @MeetingMemberID int
 as 
 begin
-    select * from MOM_MeetingMember
-    WHERE MeetingMemberID=@MeetingMemberID;
+    SELECT mm.MeetingMemberID,
+           mm.MeetingID,
+           m.MeetingDate,
+           mm.StaffID,
+           s.StaffName,
+           mm.IsPresent,
+           mm.Remarks,
+           mm.Created,
+           mm.Modified
+    FROM MOM_MeetingMember mm
+    INNER JOIN MOM_Meetings m ON mm.MeetingID = m.MeetingID
+    INNER JOIN MOM_Staff s ON mm.StaffID = s.StaffID
+    WHERE mm.MeetingMemberID=@MeetingMemberID;
 end;
+GO

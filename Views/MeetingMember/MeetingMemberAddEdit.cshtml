@@ -1,48 +1,60 @@
-﻿@model MOM_Project.Models.MeetingMemberModel
+@model MOM_Project.Models.MeetingMemberModel
 
 <div class="card">
     <div class="card-body">
-        <h5 class="card-title">Vertical Form</h5>
+        <h5 class="card-title">Meeting Member Form</h5>
 
-        <!-- Vertical Form -->
-        <form class="row g-3" asp-action="saveMeetingMember">
+        <form class="row g-3" asp-action="saveMeetingMember" method="post">
+            <input type="hidden" asp-for="MeetingMemberID" />
+
             <div class="col-12">
-                <label for="meetingId" class="form-label" asp-for="MeetingID">Meeting ID</label>
-                <input type="number" class="form-control" id="meetingId" asp-for="MeetingID">
-                <span asp-validation-for="MeetingID"></span>
+                <label class="form-label" asp-for="MeetingID">Meeting</label>
+                <select class="form-select" asp-for="MeetingID">
+                    <option value="">-- Select Meeting --</option>
+                    @if (ViewBag.Meetings != null)
+                    {
+                        @foreach (var m in ViewBag.Meetings as List<MOM_Project.Models.MeetingsModel>)
+                        {
+                            <option value="@m.MeetingID">Meeting ID: @m.MeetingID (@(m.MeetingDate.ToString("yyyy-MM-dd")))</option>
+                        }
+                    }
+                </select>
+                <span class="text-danger" asp-validation-for="MeetingID"></span>
             </div>
 
             <div class="col-12">
-                <label for="staffId" class="form-label" asp-for="StaffID">Staff ID</label>
-                <input type="number" class="form-control" id="staffId" asp-for="StaffID">
-                <span asp-validation-for="StaffID"></span>
+                <label class="form-label" asp-for="StaffID">Staff Name</label>
+                <select class="form-select" asp-for="StaffID">
+                    <option value="">-- Select Staff --</option>
+                    @if (ViewBag.Staff != null)
+                    {
+                        @foreach (var s in ViewBag.Staff as List<MOM_Project.Models.StaffModel>)
+                        {
+                            <option value="@s.StaffID">@s.StaffName</option>
+                        }
+                    }
+                </select>
+                <span class="text-danger" asp-validation-for="StaffID"></span>
             </div>
 
             <div class="col-12">
-                <label for="isPresent" class="form-label" asp-for="IsPresent">Is Present</label>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="isPresent" asp-for="IsPresent">
-                    <label class="form-check-label" for="isPresent">
-                        Present
-                    </label>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" asp-for="IsPresent">
+                    <label class="form-check-label" asp-for="IsPresent">Present</label>
                 </div>
             </div>
 
             <div class="col-12">
-                <label for="remarks" class="form-label" asp-for="Remarks">Remarks</label>
-                <textarea class="form-control" id="remarks" rows="3" asp-for="Remarks"></textarea>
-                <span asp-validation-for="Remarks"></span>
+                <label class="form-label" asp-for="Remarks">Remarks</label>
+                <textarea class="form-control" rows="3" asp-for="Remarks"></textarea>
+                <span class="text-danger" asp-validation-for="Remarks"></span>
             </div>
 
             <div class="text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>
                 <button type="reset" class="btn btn-secondary">Reset</button>
-                <a asp-controller="MeetingMember"
-                   asp-action="MeetingMemberList"
-                   class="btn btn-danger">
-                    Cancel
-                </a>
+                <a asp-action="MeetingMemberList" class="btn btn-danger">Cancel</a>
             </div>
-        </form><!-- Vertical Form -->
+        </form>
     </div>
 </div>

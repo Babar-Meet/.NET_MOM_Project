@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
 namespace MOM_Project.Models
 {
@@ -7,31 +7,30 @@ namespace MOM_Project.Models
         [Key]
         public int StaffID { get; set; }
 
-        [Required(ErrorMessage = "Department ID is required")]
-        [Range(1, int.MaxValue, ErrorMessage = "Department ID must be a positive number")]
+        [Required(ErrorMessage = "Department is required")]
+        [Range(1, int.MaxValue, ErrorMessage = "Please select a department")]
         public int DepartmentID { get; set; }
 
+        // Display name (populated from JOIN, not submitted by form)
+        public string? DepartmentName { get; set; }
+
         [Required(ErrorMessage = "Staff name is required")]
-        [MaxLength(100, ErrorMessage = "Staff name cannot exceed 100 characters")]
-        public string StaffName { get; set; }
+        [MaxLength(50, ErrorMessage = "Staff name cannot exceed 50 characters")]
+        public string StaffName { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Mobile number is required")]
-        [MaxLength(15, ErrorMessage = "Mobile number cannot exceed 15 characters")]
-        [RegularExpression(@"^[0-9+\-()\s]*$", ErrorMessage = "Invalid mobile number format")]
-        public string MobileNo { get; set; }
+        [MaxLength(20, ErrorMessage = "Mobile number cannot exceed 20 characters")]
+        public string MobileNo { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Email address is required")]
-        [MaxLength(100, ErrorMessage = "Email address cannot exceed 100 characters")]
+        [MaxLength(50, ErrorMessage = "Email address cannot exceed 50 characters")]
         [EmailAddress(ErrorMessage = "Invalid email address format")]
-        public string EmailAddress { get; set; }
+        public string EmailAddress { get; set; } = string.Empty;
 
-        [MaxLength(500, ErrorMessage = "Remarks cannot exceed 500 characters")]
+        [MaxLength(250, ErrorMessage = "Remarks cannot exceed 250 characters")]
         public string? Remarks { get; set; }
 
-        [Required(ErrorMessage = "Creation date is required")]
         public DateTime Created { get; set; }
-
-        [Required(ErrorMessage = "Modification date is required")]
         public DateTime Modified { get; set; }
     }
 }

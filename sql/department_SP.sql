@@ -1,17 +1,17 @@
 use MOM
 go
 --insert department stored procedure
-create procedure MOM_Department_Insert
+CREATE OR ALTER PROCEDURE MOM_Department_Insert
  @DepartmentName nvarchar(250)
 as
 begin
  insert into MOM_Department(DepartmentName,Created,Modified)
 	values(@DepartmentName,GETDATE(),GETDATE());
 end;
+GO
 
 --update department store procedure
-go
-create procedure MOM_Department_Update
+CREATE OR ALTER PROCEDURE MOM_Department_Update
 	@DepartmentID int,
 	@DepartmentName nvarchar(250)
 as
@@ -22,33 +22,32 @@ begin
 		Modified=GETDATE()
 	where DepartmentID=@DepartmentID
 end;
+GO
 
 --delete department stored procedure
-go
-create procedure MOM_Department_Delete
+CREATE OR ALTER PROCEDURE MOM_Department_Delete
 	@DepartmentID int
 as
 begin
 	delete from MOM_Department
 	where DepartmentID=@DepartmentID
 end;
-
+GO
 
 --getall department store procedure
-go
-create procedure MOM_Department_GetAll
+CREATE OR ALTER PROCEDURE MOM_Department_GetAll
 as
 begin
 	select * from MOM_Department;
 end;
+GO
 
 --get by id department store procedure
-go 
-create procedure MOM_Department_GetByID
+CREATE OR ALTER PROCEDURE MOM_Department_GetByID
  @DepartmentID int
 as
 begin
  select * from MOM_Department
 	where DepartmentID=@DepartmentID
 end;
-
+GO

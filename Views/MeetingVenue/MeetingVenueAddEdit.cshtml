@@ -1,24 +1,22 @@
-﻿@model MOM_Project.Models.MeetingVenueModel
+@model MOM_Project.Models.MeetingVenueModel
 
 <div class="card">
     <div class="card-body">
-        <h5 class="card-title">Vertical Form</h5>
+        <h5 class="card-title">Meeting Venue Form</h5>
 
-        <form class="row g-3" asp-action="saveMeetingVenue">
+        <form class="row g-3" asp-action="saveMeetingVenue" method="post">
+            <input type="hidden" asp-for="MeetingVenueID" />
+            
             <div class="col-12">
                 <label class="form-label" asp-for="MeetingVenueName">Meeting Venue Name</label>
                 <input type="text" class="form-control" asp-for="MeetingVenueName">
-                <span asp-validation-for="MeetingVenueName"></span>
+                <span class="text-danger" asp-validation-for="MeetingVenueName"></span>
             </div>
 
             <div class="text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>
                 <button type="reset" class="btn btn-secondary">Reset</button>
-                <a asp-controller="MeetingVenue"
-                   asp-action="MeetingVenueList"
-                   class="btn btn-danger">
-                    Cancel
-                </a>
+                <a asp-action="MeetingVenueList" class="btn btn-danger">Cancel</a>
             </div>
         </form>
     </div>

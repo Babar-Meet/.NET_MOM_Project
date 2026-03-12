@@ -1,48 +1,55 @@
-﻿@model MOM_Project.Models.StaffModel
+@model MOM_Project.Models.StaffModel
 
 <div class="card">
     <div class="card-body">
-        <h5 class="card-title">Vertical Form</h5>
+        <h5 class="card-title">Staff Form</h5>
 
-        <form class="row g-3" asp-action="saveStaff">
+        <form class="row g-3" asp-action="saveStaff" method="post">
+            <input type="hidden" asp-for="StaffID" />
+
             <div class="col-12">
-                <label class="form-label" asp-for="DepartmentID">Department ID</label>
-                <input type="number" class="form-control" asp-for="DepartmentID">
-                <span asp-validation-for="DepartmentID"></span>
+                <label class="form-label" asp-for="DepartmentID">Department</label>
+                <select class="form-select" asp-for="DepartmentID">
+                    <option value="">-- Select Department --</option>
+                    @if (ViewBag.Departments != null)
+                    {
+                        @foreach (var d in ViewBag.Departments as List<MOM_Project.Models.DepartmentModel>)
+                        {
+                            <option value="@d.DepartmentID">@d.DepartmentName</option>
+                        }
+                    }
+                </select>
+                <span class="text-danger" asp-validation-for="DepartmentID"></span>
             </div>
 
             <div class="col-12">
                 <label class="form-label" asp-for="StaffName">Staff Name</label>
                 <input type="text" class="form-control" asp-for="StaffName">
-                <span asp-validation-for="StaffName"></span>
+                <span class="text-danger" asp-validation-for="StaffName"></span>
             </div>
 
             <div class="col-12">
                 <label class="form-label" asp-for="MobileNo">Mobile No</label>
                 <input type="text" class="form-control" asp-for="MobileNo">
-                <span asp-validation-for="MobileNo"></span>
+                <span class="text-danger" asp-validation-for="MobileNo"></span>
             </div>
 
             <div class="col-12">
                 <label class="form-label" asp-for="EmailAddress">Email Address</label>
                 <input type="email" class="form-control" asp-for="EmailAddress">
-                <span asp-validation-for="EmailAddress"></span>
+                <span class="text-danger" asp-validation-for="EmailAddress"></span>
             </div>
 
             <div class="col-12">
                 <label class="form-label" asp-for="Remarks">Remarks</label>
                 <textarea class="form-control" rows="3" asp-for="Remarks"></textarea>
-                <span asp-validation-for="Remarks"></span>
+                <span class="text-danger" asp-validation-for="Remarks"></span>
             </div>
 
             <div class="text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>
                 <button type="reset" class="btn btn-secondary">Reset</button>
-                <a asp-controller="Staff"
-                   asp-action="StaffList"
-                   class="btn btn-danger">
-                    Cancel
-                </a>
+                <a asp-action="StaffList" class="btn btn-danger">Cancel</a>
             </div>
         </form>
     </div>

@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
 namespace MOM_Project.Models
 {
@@ -7,23 +7,24 @@ namespace MOM_Project.Models
         [Key]
         public int MeetingMemberID { get; set; }
 
-        [Required(ErrorMessage = "Meeting ID is required")]
-        [Range(1, int.MaxValue, ErrorMessage = "Meeting ID must be a positive number")]
+        [Required(ErrorMessage = "Meeting is required")]
+        [Range(1, int.MaxValue, ErrorMessage = "Please select a meeting")]
         public int MeetingID { get; set; }
 
-        [Required(ErrorMessage = "Staff ID is required")]
-        [Range(1, int.MaxValue, ErrorMessage = "Staff ID must be a positive number")]
+        [Required(ErrorMessage = "Staff is required")]
+        [Range(1, int.MaxValue, ErrorMessage = "Please select a staff member")]
         public int StaffID { get; set; }
+
+        // Display properties (populated from JOINs, not submitted by form)
+        public string? StaffName { get; set; }
+        public DateTime? MeetingDate { get; set; }
 
         public bool IsPresent { get; set; }
 
-        [MaxLength(500, ErrorMessage = "Remarks cannot exceed 500 characters")]
+        [MaxLength(250, ErrorMessage = "Remarks cannot exceed 250 characters")]
         public string? Remarks { get; set; }
 
-        [Required(ErrorMessage = "Creation date is required")]
         public DateTime Created { get; set; }
-
-        [Required(ErrorMessage = "Modification date is required")]
         public DateTime Modified { get; set; }
     }
 }
