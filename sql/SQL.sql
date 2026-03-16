@@ -6,16 +6,17 @@
 -- TABLE CREATION
 -- =============================================
 
+use MOM_Project
 -- Run these CREATE TABLE statements only if the tables don't exist yet.
 -- If tables already exist, skip to the Stored Procedures section below.
 SELECT * FROM INFORMATION_SCHEMA.TABLES
 
 select * from MOM_MeetingType
 select * from MOM_Department
-select * from MOM_MeetingType
-select * from MOM_MeetingType
-select * from MOM_MeetingType
-select * from MOM_MeetingType
+select * from MOM_MeetingMember
+select * from MOM_Meetings
+select * from MOM_MeetingVenue
+select  * from MOM_Staff
 
 
 
