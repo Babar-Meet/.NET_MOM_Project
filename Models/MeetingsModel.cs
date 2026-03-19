@@ -39,5 +39,9 @@ namespace MOM_Project.Models
 
         [MaxLength(250, ErrorMessage = "Cancellation reason cannot exceed 250 characters")]
         public string? CancellationReason { get; set; }
+
+        public int TotalMembers { get; set; }
+        public int PresentMembers { get; set; }
+        public int AbsentMembers { get; set; }
     }
 }

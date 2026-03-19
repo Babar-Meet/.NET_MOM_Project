@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using MOM_Project.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 
@@ -57,7 +58,7 @@ namespace MOM_Project.Controllers
             ViewBag.Staff = staffList;
         }
 
-        public IActionResult MeetingMemberList()
+        public IActionResult MeetingMemberList(int? meetingId)
         {
             List<MeetingMemberModel> members = new List<MeetingMemberModel>();
 
@@ -86,7 +87,13 @@ namespace MOM_Project.Controllers
                 con.Close();
             }
 
+            if (meetingId.HasValue)
+            {
+                members = members.Where(m => m.MeetingID == meetingId.Value).ToList();
+            }
+
             ViewBag.MeetingMembers = members;
+            ViewBag.FilterMeetingID = meetingId;
             return View();
         }
 
@@ -173,4 +180,4 @@ namespace MOM_Project.Controllers
             return RedirectToAction("MeetingMemberList");
         }
     }
-}
+}

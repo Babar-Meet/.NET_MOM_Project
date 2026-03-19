@@ -72,6 +72,7 @@ namespace MOM_Project.Controllers
         public IActionResult MeetingList()
         {
             List<MeetingsModel> meetings = new List<MeetingsModel>();
+            Dictionary<int, (int Total, int Present, int Absent)> memberStats = new Dictionary<int, (int Total, int Present, int Absent)>();
 
             using (SqlConnection con = new SqlConnection(GetConnectionString()))
             {
@@ -101,7 +102,50 @@ namespace MOM_Project.Controllers
                         CancellationReason = reader["CancellationReason"] != DBNull.Value ? reader["CancellationReason"].ToString() ?? string.Empty : string.Empty
                     });
                 }
+
+                reader.Close();
+
+                SqlCommand memberCmd = new SqlCommand("MOM_MeetingMember_GetAll", con);
+                memberCmd.CommandType = System.Data.CommandType.StoredProcedure;
+                SqlDataReader memberReader = memberCmd.ExecuteReader();
+
+                while (memberReader.Read())
+                {
+                    int meetingId = Convert.ToInt32(memberReader["MeetingID"]);
+                    bool isPresent = Convert.ToBoolean(memberReader["IsPresent"]);
+
+                    if (!memberStats.ContainsKey(meetingId))
+                    {
+                        memberStats[meetingId] = (0, 0, 0);
+                    }
+
+                    var stats = memberStats[meetingId];
+                    stats.Total++;
+
+                    if (isPresent)
+                    {
+                        stats.Present++;
+                    }
+                    else
+                    {
+                        stats.Absent++;
+                    }
+
+                    memberStats[meetingId] = stats;
+                }
+
+                memberReader.Close();
                 con.Close();
+            }
+
+            foreach (var meeting in meetings)
+            {
+                if (memberStats.TryGetValue(meeting.MeetingID, out var stats))
+                {
+                    meeting.TotalMembers = stats.Total;
+                    meeting.PresentMembers = stats.Present;
+                    meeting.AbsentMembers = stats.Absent;
+                }
             }
 
             ViewBag.Meetings = meetings;

@@ -36,6 +36,10 @@
                             {
                                 @foreach (var meeting in ViewBag.Meetings as List<MOM_Project.Models.MeetingsModel>)
                                 {
+                                    var statusText = meeting.IsCancelled
+                                    ? "Cancelled"
+                                    : (meeting.MeetingDate < DateTime.Now ? "Completed" : "Upcoming");
+
                                     <tr>
                                         <td>@meeting.MeetingID</td>
                                         <td>@meeting.MeetingDate.ToShortDateString() @meeting.MeetingDate.ToShortTimeString()</td>
@@ -57,6 +61,22 @@
                                             }
                                         </td>
                                         <td>
+                                            <button type="button"
+                                                    class="btn btn-sm btn-info text-white view-meeting-btn"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#meetingViewModal"
+                                                    data-id="@meeting.MeetingID"
+                                                    data-description="@meeting.MeetingDescription"
+                                                    data-date="@meeting.MeetingDate.ToString("dd-MM-yyyy HH:mm")"
+                                                    data-type="@meeting.MeetingTypeName"
+                                                    data-venue="@meeting.MeetingVenueName"
+                                                    data-status="@statusText"
+                                                    data-department="@meeting.DepartmentName"
+                                                    data-total-members="@meeting.TotalMembers"
+                                                    data-present-members="@meeting.PresentMembers"
+                                                    data-absent-members="@meeting.AbsentMembers">
+                                                View
+                                            </button>
                                             <a asp-action="MeetingAddEdit" asp-route-id="@meeting.MeetingID" class="btn btn-sm btn-primary">Edit</a>
                                             <a asp-action="Delete" asp-route-id="@meeting.MeetingID" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
                                         </td>
@@ -71,12 +91,68 @@
     </div>
 </section>
 
+<div class="modal fade" id="meetingViewModal" tabindex="-1" aria-labelledby="meetingViewModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="meetingViewModalLabel">Meeting Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6 class="mb-2">Meeting Info</h6>
+                        <p class="mb-1"><strong>Description:</strong> <span id="modalMeetingDescription">-</span></p>
+                        <p class="mb-1"><strong>Date & Time:</strong> <span id="modalMeetingDateTime">-</span></p>
+                        <p class="mb-1"><strong>Type:</strong> <span id="modalMeetingType">-</span></p>
+                        <p class="mb-0"><strong>Venue:</strong> <span id="modalMeetingVenue">-</span></p>
+                    </div>
+                    <div class="col-md-6 mt-3 mt-md-0">
+                        <h6 class="mb-2">Status & Statistics</h6>
+                        <p class="mb-1"><strong>Status:</strong> <span id="modalMeetingStatus">-</span></p>
+                        <p class="mb-1"><strong>Dept Status:</strong> <span id="modalDepartmentStatus">-</span></p>
+                        <p class="mb-1"><strong>Total Members:</strong> <span id="modalTotalMembers">0</span></p>
+                        <p class="mb-1"><strong>Present Members:</strong> <span id="modalPresentMembers">0</span></p>
+                        <p class="mb-0"><strong>Absent Members:</strong> <span id="modalAbsentMembers">0</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#" id="modalEditBtn" class="btn btn-primary">Edit</a>
+                <a href="#" id="modalMembersBtn" class="btn btn-secondary">View Members</a>
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
     document.getElementById('meetingSearch').addEventListener('keyup', function() {
         let value = this.value.toLowerCase();
         let rows = document.querySelectorAll('#meetingTable tbody tr');
         rows.forEach(row => {
             row.style.display = row.innerText.toLowerCase().includes(value) ? '' : 'none';
+        });
+    });
+
+    const editUrlTemplate = '@Url.Action("MeetingAddEdit", "Meetings", new { id = "__id__" })';
+    const membersUrlTemplate = '@Url.Action("MeetingMemberList", "MeetingMember", new { meetingId = "__id__" })';
+
+    document.querySelectorAll('.view-meeting-btn').forEach(button => {
+        button.addEventListener('click', function () {
+            const id = this.getAttribute('data-id');
+            document.getElementById('modalMeetingDescription').innerText = this.getAttribute('data-description') || '-';
+            document.getElementById('modalMeetingDateTime').innerText = this.getAttribute('data-date') || '-';
+            document.getElementById('modalMeetingType').innerText = this.getAttribute('data-type') || '-';
+            document.getElementById('modalMeetingVenue').innerText = this.getAttribute('data-venue') || '-';
+            document.getElementById('modalMeetingStatus').innerText = this.getAttribute('data-status') || '-';
+            document.getElementById('modalDepartmentStatus').innerText = this.getAttribute('data-department') || '-';
+            document.getElementById('modalTotalMembers').innerText = this.getAttribute('data-total-members') || '0';
+            document.getElementById('modalPresentMembers').innerText = this.getAttribute('data-present-members') || '0';
+            document.getElementById('modalAbsentMembers').innerText = this.getAttribute('data-absent-members') || '0';
+
+            document.getElementById('modalEditBtn').setAttribute('href', editUrlTemplate.replace('__id__', id));
+            document.getElementById('modalMembersBtn').setAttribute('href', membersUrlTemplate.replace('__id__', id));
         });
     });
 </script>
