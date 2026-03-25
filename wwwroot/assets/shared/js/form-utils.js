@@ -4,11 +4,7 @@
 class FormUtils {
     static validateEmail(value) {
         if (!value) {
-            return { isValid: false, message: 'Email address is required' };
-        }
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(value)) {
-            return { isValid: false, message: 'Please enter a valid email address' };
+            return { isValid: false, message: 'Username is required' };
         }
         return { isValid: true };
     }
@@ -16,12 +12,6 @@ class FormUtils {
     static validatePassword(value) {
         if (!value) {
             return { isValid: false, message: 'Password is required' };
-        }
-        if (value.length < 8) {
-            return { isValid: false, message: 'Password must be at least 8 characters long' };
-        }
-        if (!/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/.test(value)) {
-            return { isValid: false, message: 'Password must contain uppercase, lowercase, and number' };
         }
         return { isValid: true };
     }

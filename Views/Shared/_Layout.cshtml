@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+@using Microsoft.AspNetCore.Http
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -214,12 +215,12 @@
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                         <img src="~/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-                        <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+                        <span class="d-none d-md-block dropdown-toggle ps-2">@(Context.Session.GetString("UserName") ?? "Profile")</span>
                     </a><!-- End Profile Iamge Icon -->
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
-                            <h6>Kevin Anderson</h6>
+                            <h6>@(Context.Session.GetString("UserName") ?? "User")</h6>
                             <span>Web Designer</span>
                         </li>
                         <li>
@@ -257,10 +258,13 @@
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
-                                <i class="bi bi-box-arrow-right"></i>
-                                <span>Sign Out</span>
-                            </a>
+                            <form asp-controller="LoginSignup" asp-action="Logout" method="post" id="logoutForm" class="d-inline m-0 p-0 w-100">
+                                @Html.AntiForgeryToken()
+                                <a class="dropdown-item d-flex align-items-center" href="javascript:document.getElementById('logoutForm').submit()">
+                                    <i class="bi bi-box-arrow-right"></i>
+                                    <span>Sign Out</span>
+                                </a>
+                            </form>
                         </li>
 
                     </ul><!-- End Profile Dropdown Items -->

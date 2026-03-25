@@ -209,23 +209,8 @@ class LoginForm1 {
         this.isSubmitting = true;
         this.submitBtn.classList.add('loading');
         
-        try {
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            
-            // Use shared login simulation
-            await FormUtils.simulateLogin(email, password);
-            
-            // Show success state
-            this.showSuccessMessage();
-            
-        } catch (error) {
-            console.error('Login error:', error);
-            this.showLoginError(error.message);
-        } finally {
-            this.isSubmitting = false;
-            this.submitBtn.classList.remove('loading');
-        }
+        // Submit the form normally to the ASP.NET MVC backend
+        this.form.submit();
     }
     
     showSuccessMessage() {
